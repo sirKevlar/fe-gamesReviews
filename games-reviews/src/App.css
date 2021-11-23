@@ -1,4 +1,8 @@
 /* -------WHOLE APP------- */
+html {
+  min-width: 370px;
+}
+
 .App {
   text-align: center;
 }
@@ -16,9 +20,10 @@ main {
   font-weight: 700;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
+  flex-flow: column wrap;
   align-items: center;
-  position: relative;
+  position: absolute;
+  width: 100%;
 }
 /* -------HEADER------- */
 .header {
@@ -80,6 +85,26 @@ main {
 }
 
 .fancy-card:hover {
-  box-shadow: 0 0 20px 8px #a6f216;
-  background-color: #ffa046;
+  box-shadow: 0 0 20px 12px #a6f216;
+  background-color: #fc7420;
+}
+
+.review-image {
+  width: 30vw;
+  height: 30vw;
+  margin: 1rem;
+  border-radius: 5% 40% 20% 5%;
+  background-size: cover;
+  max-width: 185px;
+  max-height: 185px;
+}
+
+.review-sub-one {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.review-sub-two {
+  margin-right: 5rem;
 }
