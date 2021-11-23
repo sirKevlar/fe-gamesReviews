@@ -12,7 +12,9 @@ function App() {
       <Header />
       <RequireLogin>
         {isLoggedIn ? (
-          <button onClick={logout}>LOGOUT</button>
+          <button className="logout" onClick={logout}>
+            LOGOUT
+          </button>
         ) : (
           <p>Do nothing</p>
           // <button
