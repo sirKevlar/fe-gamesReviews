@@ -63,18 +63,23 @@ main {
   right: 11vh;
 }
 
+/* -------LOGIN PAGE------- */
 #user-heading {
   margin-top: 0;
   margin-bottom: 3rem;
 }
 
+/* -------CARD------- */
 .fancy-card {
   background-color: #f52942;
   width: 80%;
+  max-width: 500px;
+  margin: 1rem 0 1rem 0;
   box-shadow: 0 0 10px 4px #ffe600;
   transition: box-shadow 0.5s;
 }
 
 .fancy-card:hover {
   box-shadow: 0 0 20px 8px #a6f216;
+  background-color: #ffa046;
 }
