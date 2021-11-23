@@ -6,7 +6,6 @@ import RequireLogin from "./components/RequireLogin";
 
 function App() {
   const { user, setUser, isLoggedIn, logout } = useContext(UserContext);
-  console.log(user);
 
   return (
     <div className="App">

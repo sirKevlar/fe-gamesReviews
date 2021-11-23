@@ -1,14 +1,27 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
+import { getUsers } from "../utils/apiCall";
 
 const Login = () => {
+  const [usersFromApi, setUsersFromApi] = useState([]);
   const [username, setUsername] = useState("");
   const { setUser } = useContext(UserContext);
+  useEffect(() => {
+    getUsers().then((users) => {
+      setUsersFromApi(users);
+    });
+  });
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Api call to check login details here
-    setUser({ username });
+
+    usersFromApi.forEach((user) => {
+      if (user.username === username) {
+        setUser({ username });
+      } else {
+        setUsername("INVALID USER");
+      }
+    });
   };
 
   return (
