@@ -3,16 +3,22 @@
   text-align: center;
 }
 
-main {
+.under-header {
+  position: fixed;
   margin-top: 12vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #c1d1ec;
-  position: absolute;
   width: 100vw;
-  top: 0;
-  bottom: 0;
+  height: 88vh;
+  background-image: linear-gradient(to bottom right, #0080d5, #47c5fd);
+}
+
+main {
+  font-family: "Courier New", Courier, monospace;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: center;
+  position: relative;
 }
 /* -------HEADER------- */
 .header {
@@ -23,7 +29,7 @@ main {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #f4e567;
+  background-color: #ffe600;
 }
 
 .header-content {
@@ -41,21 +47,34 @@ main {
   height: 8vh;
   width: 8vh;
   font-size: 0.8em;
-  font-weight: 500;
+  font-weight: 600;
   color: aliceblue;
 }
 
 .logout {
   position: fixed;
   z-index: 1000;
-  margin-top: 4.7vh;
+  margin-top: -7.4vh;
   border-radius: 3px;
   background-color: #47c5fd;
-  color: aliceblue;
+  color: black;
   font-size: 0.8em;
+  font-weight: 600;
   right: 11vh;
 }
 
 #user-heading {
+  margin-top: 0;
   margin-bottom: 3rem;
+}
+
+.fancy-card {
+  background-color: #f52942;
+  width: 80%;
+  box-shadow: 0 0 10px 4px #ffe600;
+  transition: box-shadow 0.5s;
+}
+
+.fancy-card:hover {
+  box-shadow: 0 0 20px 8px #a6f216;
 }
