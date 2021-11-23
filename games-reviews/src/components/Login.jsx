@@ -13,6 +13,7 @@ const Login = () => {
 
   return (
     <form onSubmit={handleSubmit}>
+      <h2>ENTER USERNAME TO ACCESS SITE</h2>
       <label>
         Username:
         <input
