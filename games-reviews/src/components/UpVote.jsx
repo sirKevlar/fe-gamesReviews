@@ -5,11 +5,11 @@ import { downVote } from "../utils/apiCall";
 export default function UpVote({ reviewVotes, review_id }) {
   const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  console.log(reviewVotes);
+
   useEffect(() => {
     setVotes(reviewVotes);
     setIsLoading(false);
-  }, [reviewVotes, votes]);
+  }, [reviewVotes]);
 
   if (isLoading) return <h5>Be Patient...</h5>;
 
@@ -19,8 +19,8 @@ export default function UpVote({ reviewVotes, review_id }) {
       <div>
         <button
           onClick={() => {
-            setVotes((votes) => {
-              votes += 1;
+            setVotes((currVotes) => {
+              return currVotes + 1;
             });
             upVote(review_id);
           }}
@@ -29,9 +29,10 @@ export default function UpVote({ reviewVotes, review_id }) {
           🔼
         </button>
         <button
+          disabled={votes < 1}
           onClick={() => {
-            setVotes((votes) => {
-              votes -= 1;
+            setVotes((currVotes) => {
+              return currVotes - 1;
             });
             downVote(review_id);
           }}

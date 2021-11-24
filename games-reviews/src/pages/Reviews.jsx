@@ -24,20 +24,21 @@ export default function Reviews() {
         const reviewUrl = `/reviews/${review.review_id}`;
 
         return (
-          <Link key={review.title} className="link" to={reviewUrl}>
+          <div key={review.title} className="rev-card">
             <FancyCard>
               <div className="review-sub-one">
-                <img
-                  src={review.review_img_url}
-                  alt={review.title}
-                  className="review-image"
-                />
-
-                {/* <UpVote id={review.review_id} reviewVotes={review.votes} /> */}
+                <Link className="link" to={reviewUrl}>
+                  <img
+                    src={review.review_img_url}
+                    alt={review.title}
+                    className="review-image"
+                  />
+                </Link>
+                <UpVote id={review.review_id} reviewVotes={review.votes} />
               </div>
               <h4>{review.title}</h4>
             </FancyCard>
-          </Link>
+          </div>
         );
       })}
     </main>

@@ -33,10 +33,24 @@ main {
 
 .link {
   text-decoration: none;
-  width: 100%;
+  width: min-content;
+}
+
+.link,
+.rev-card {
   display: flex;
   flex-direction: column;
   align-items: center;
+  transition: opacity 0.5s;
+  border-radius: 10px;
+}
+
+.rev-card {
+  width: 100%;
+}
+
+.link:hover {
+  opacity: 0.5;
 }
 /* -------HEADER------- */
 .header {
@@ -50,6 +64,7 @@ main {
   align-items: center;
   justify-content: space-between;
   background-color: #ffe600;
+  box-shadow: 0 0 10px 5px grey;
 }
 
 .header-content {
@@ -103,14 +118,8 @@ main {
   width: 80%;
   max-width: 500px;
   margin: 1rem 0 1rem 0;
-  box-shadow: 0 0 10px 4px #ffe600;
-  transition: box-shadow 0.5s;
+  box-shadow: 0 0 10px 5px grey;
   border-radius: 10px;
-}
-
-.fancy-card:hover {
-  box-shadow: 0 0 20px 12px #a6f216;
-  background-color: #fc7420;
 }
 
 .review-image {
@@ -131,6 +140,7 @@ main {
 
 .review-sub-two {
   padding-bottom: 1rem;
+  margin: 2rem;
 }
 
 .review-body {

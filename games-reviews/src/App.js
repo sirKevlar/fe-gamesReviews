@@ -18,7 +18,7 @@ function App() {
             <div>
               <Link to="/">
                 <button className="logout" onClick={logout}>
-                  LOGOUT
+                  <i classnames="fas fa-sign-out-alt">OUT</i>
                 </button>
               </Link>
               <Main />

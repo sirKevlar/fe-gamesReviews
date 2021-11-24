@@ -11,18 +11,20 @@ const Login = () => {
     getUsers().then((users) => {
       setUsersFromApi(users);
     });
-  });
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    usersFromApi.forEach((user) => {
-      if (user.username === username) {
-        setUser({ username });
-      } else {
-        setUsername("INVALID USER");
-      }
+    const matchingUser = usersFromApi.find((user) => {
+      return user.username === username;
     });
+
+    if (matchingUser) {
+      setUser(matchingUser);
+    } else {
+      setUsername("INVALID USER");
+    }
   };
 
   return (

@@ -14,7 +14,6 @@ export default function ReviewById() {
   useEffect(() => {
     getReviewById(reviewId).then((reviewFromApi) => {
       setReview(reviewFromApi);
-      console.log(reviewFromApi);
       setCommentCount(reviewFromApi.comment_count);
       setIsLoading(false);
     });
