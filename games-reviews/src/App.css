@@ -1,18 +1,23 @@
 /* -------WHOLE APP------- */
 html {
   min-width: 370px;
+  background-image: linear-gradient(to bottom right, #0080d5, #47c5fd);
 }
 
 .App {
   text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: grid;
+  grid-template-rows: 12vh auto;
+  grid-template-areas:
+    "header"
+    "main";
 }
 
 .under-header {
-  position: fixed;
-  margin-top: 12vh;
-  width: 100vw;
-  height: 88vh;
-  background-image: linear-gradient(to bottom right, #0080d5, #47c5fd);
+  grid-area: main;
+  height: auto;
 }
 
 main {
@@ -25,8 +30,18 @@ main {
   position: absolute;
   width: 100%;
 }
+
+.link {
+  text-decoration: none;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 /* -------HEADER------- */
 .header {
+  z-index: 1000;
+  grid-area: header;
   position: fixed;
   top: 0;
   width: 100%;
@@ -69,6 +84,14 @@ main {
 }
 
 /* -------LOGIN PAGE------- */
+.login-page {
+  height: 88%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 #user-heading {
   margin-top: 0;
   margin-bottom: 3rem;
@@ -82,6 +105,7 @@ main {
   margin: 1rem 0 1rem 0;
   box-shadow: 0 0 10px 4px #ffe600;
   transition: box-shadow 0.5s;
+  border-radius: 10px;
 }
 
 .fancy-card:hover {
@@ -106,5 +130,26 @@ main {
 }
 
 .review-sub-two {
-  margin-right: 5rem;
+  padding-bottom: 1rem;
+}
+
+.review-body {
+  padding: 0 2rem;
+  text-align: justify;
+}
+
+.vote-button {
+  font-size: 2em;
+  padding: 0.2rem;
+  border-radius: 20%;
+  background-color: #ffe600;
+}
+
+.vote-button:hover {
+  background-color: #f52942;
+  cursor: pointer;
+}
+
+.large-image {
+  width: 80%;
 }

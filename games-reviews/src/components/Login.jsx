@@ -26,7 +26,7 @@ const Login = () => {
   };
 
   return (
-    <main>
+    <main className="login-page">
       <form onSubmit={handleSubmit}>
         <h2 id="user-heading">PLEASE ENTER USERNAME</h2>
         <label>

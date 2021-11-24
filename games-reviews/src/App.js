@@ -1,6 +1,7 @@
 import "./App.css";
 import Header from "./components/Header";
 import { useContext } from "react";
+import { Link } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
 import RequireLogin from "./components/RequireLogin";
 import Main from "./pages/Main";
@@ -10,14 +11,16 @@ function App() {
 
   return (
     <div className="App">
-      <Header />
+      <Header id="test" />
       <div className="under-header">
         <RequireLogin>
           {isLoggedIn ? (
             <div>
-              <button className="logout" onClick={logout}>
-                LOGOUT
-              </button>
+              <Link to="/">
+                <button className="logout" onClick={logout}>
+                  LOGOUT
+                </button>
+              </Link>
               <Main />
             </div>
           ) : (
