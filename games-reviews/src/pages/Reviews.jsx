@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import FancyCard from "../components/FancyCard";
+import SideNav from "../components/SideNav";
 import UpVote from "../components/UpVote";
 import { getReviews } from "../utils/apiCall";
 
@@ -19,6 +20,9 @@ export default function Reviews() {
   return (
     <main>
       <h2>Check these reviews...</h2>
+      <SideNav>
+        <h3>SN!</h3>
+      </SideNav>
 
       {reviews.map((review) => {
         const reviewUrl = `/reviews/${review.review_id}`;

@@ -1,14 +1,38 @@
 import React from "react";
 import { useState } from "react";
 
-export default function SideNav() {
+export default function SideNav({ children }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  if (!isOpen) return <button>OPEN</button>;
+  if (!isOpen)
+    return (
+      <div className="sidenav">
+        <div className="sidenav-button">
+          <button
+            className="sidenav-open"
+            onClick={() => {
+              setIsOpen(true);
+            }}
+          >
+            OPEN
+          </button>
+        </div>
+      </div>
+    );
 
   return (
-    <div>
-      <button>CLOSE</button>
+    <div className="sidenav">
+      <div className="sidenav-button">
+        <button
+          className="sidenav-close"
+          onClick={() => {
+            setIsOpen(false);
+          }}
+        >
+          CLOSE
+        </button>
+      </div>
+      <div className="popout">{children}</div>
     </div>
   );
 }
