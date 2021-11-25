@@ -232,6 +232,8 @@ main {
   left: 2%;
   top: 13.5vh;
   font-size: 1.3em;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 500;
 }
 
 .sidenav-top,
@@ -288,10 +290,61 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  padding: 0 32%;
+  padding: 0 30%;
   font-size: 0.6em;
 }
 
 .sort-title {
   margin-top: 0;
+}
+
+.comment-input {
+  width: 80%;
+  max-width: 500px;
+  background-color: #ffe600;
+  border-radius: 5px;
+}
+
+#comment-textbox {
+  width: 90%;
+  height: 10vh;
+  margin: 1rem 0;
+  border-radius: 5px;
+  text-align: center;
+}
+
+.comments {
+  background-color: #ffe600;
+  width: 96%;
+  margin-left: auto;
+  margin-right: auto;
+  border-radius: 3px;
+  margin-bottom: 8px;
+}
+
+.comments-h5 {
+  margin: 0.5rem 0;
+}
+
+.comments-bottom {
+  display: flex;
+}
+
+.comment-vote {
+  margin: 0.3rem;
+  font-size: 0.8em;
+}
+
+.comment-body {
+  background-color: aliceblue;
+  width: 80%;
+  height: inherit;
+  margin: 0 10px 10px 10px;
+}
+
+.small-votes {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

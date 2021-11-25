@@ -2,9 +2,10 @@ import { useState, useEffect } from "react";
 import { upVote } from "../utils/apiCall";
 import { downVote } from "../utils/apiCall";
 
-export default function UpVote({ reviewVotes, review_id }) {
+export default function UpVote({ reviewVotes, review_id, addClass }) {
   const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
+  const classToAdd = `vote-button ${addClass}`;
 
   useEffect(() => {
     setVotes(reviewVotes);
@@ -15,7 +16,7 @@ export default function UpVote({ reviewVotes, review_id }) {
 
   return (
     <div className="review-sub-two">
-      <h3>VOTES: {votes}</h3>
+      <h3 className={addClass}>VOTES {votes}</h3>
       <div>
         <button
           onClick={() => {
@@ -24,7 +25,7 @@ export default function UpVote({ reviewVotes, review_id }) {
             });
             upVote(review_id);
           }}
-          className="vote-button"
+          className={classToAdd}
         >
           🔼
         </button>
@@ -36,7 +37,7 @@ export default function UpVote({ reviewVotes, review_id }) {
             });
             downVote(review_id);
           }}
-          className="vote-button"
+          className={classToAdd}
         >
           🔽
         </button>

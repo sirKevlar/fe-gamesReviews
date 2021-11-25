@@ -9,8 +9,16 @@ export const getUsers = async () => {
   return usersObj.data.users;
 };
 
-export const getReviews = async () => {
-  const reviewsObj = await boardGamesApi.get("/reviews");
+export const getReviews = async (category, sort, order = "desc") => {
+  let path = "/reviews";
+
+  if (category) path += `?category=${category}`;
+  if (!category && sort) path += `?sort_by=${sort}`;
+  if (category && sort) path += `&sort_by=${sort}`;
+  if (!category && !sort) path += `?order=${order}`;
+  if (category || sort) path += `&order=${order}`;
+
+  const reviewsObj = await boardGamesApi.get(path);
   return reviewsObj.data.reviews;
 };
 
@@ -19,9 +27,9 @@ export const getReviewById = async (id) => {
   return reviewObj.data.review;
 };
 
-export const getReviewsByCategory = async (category) => {
-  const reviewsObj = await boardGamesApi.get(`/reviews?category=${category}`);
-  return reviewsObj.data.reviews;
+export const getCommentsByReviewId = async (id) => {
+  const commentObj = await boardGamesApi.get(`/reviews/${id}/comments`);
+  return commentObj.data.comments;
 };
 
 export const upVote = async () => {

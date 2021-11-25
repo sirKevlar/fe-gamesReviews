@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import menuIcon from "../assets/menu.png";
 import closeIcon from "../assets/x-mark.png";
 

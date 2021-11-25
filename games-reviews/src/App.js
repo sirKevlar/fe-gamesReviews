@@ -1,6 +1,6 @@
 import "./App.css";
 import Header from "./components/Header";
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
 import RequireLogin from "./components/RequireLogin";
@@ -8,11 +8,12 @@ import Main from "./pages/Main";
 import logoutIcon from "./assets/logout (1).png";
 
 function App() {
-  const { user, setUser, isLoggedIn, logout } = useContext(UserContext);
+  const { isLoggedIn, logout } = useContext(UserContext);
+  const [reviews, setReviews] = useState([]);
 
   return (
     <div className="App">
-      <Header id="test" />
+      <Header setReviews={setReviews} id="test" />
       <div className="under-header">
         <RequireLogin>
           {isLoggedIn ? (
@@ -26,7 +27,7 @@ function App() {
                   />
                 </button>
               </Link>
-              <Main />
+              <Main reviews={reviews} setReviews={setReviews} />
             </div>
           ) : (
             <p>Do nothing</p>

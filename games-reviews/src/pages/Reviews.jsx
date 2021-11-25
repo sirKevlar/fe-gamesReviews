@@ -3,22 +3,21 @@ import { Link } from "react-router-dom";
 import FancyCard from "../components/FancyCard";
 import SideNav from "../components/SideNav";
 import UpVote from "../components/UpVote";
-import {
-  getReviews,
-  getCategories,
-  getReviewsByCategory,
-} from "../utils/apiCall";
+import { getReviews, getCategories } from "../utils/apiCall";
 
-export default function Reviews() {
-  const [reviews, setReviews] = useState([]);
+export default function Reviews({ reviews, setReviews }) {
   const [isLoading, setIsLoading] = useState(true);
   const [categories, setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
+  const [sortBy, setSortBy] = useState("");
+  const [order, setOrder] = useState("desc");
+
   useEffect(() => {
     getReviews().then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
       setIsLoading(false);
     });
-  }, []);
+  }, [setReviews]);
 
   useEffect(() => {
     getCategories().then((categoriesFromApi) => {
@@ -37,7 +36,8 @@ export default function Reviews() {
             return (
               <div
                 onClick={(e) => {
-                  getReviewsByCategory(category.slug).then((reviews) => {
+                  setSelectedCategory(category.slug);
+                  getReviews(category.slug).then((reviews) => {
                     setReviews(reviews);
                   });
                 }}
@@ -56,25 +56,73 @@ export default function Reviews() {
             <h6 className="white sort-title">Sort By:</h6>
             <div className="sort-radio">
               <div className="radio-pairs">
-                <input type="radio" name="sort-by" value="title" />
+                <input
+                  onChange={({ target: { value } }) => {
+                    setSortBy(value);
+                    getReviews(selectedCategory, value, order).then(
+                      (reviewsFromApi) => {
+                        setReviews(reviewsFromApi);
+                      }
+                    );
+                  }}
+                  type="radio"
+                  name="sort-by"
+                  value="title"
+                />
                 <label className="radio-label" htmlFor="title">
                   TITLE
                 </label>
               </div>
               <div className="radio-pairs">
-                <input type="radio" name="sort-by" value="owner" />
+                <input
+                  onChange={({ target: { value } }) => {
+                    setSortBy(value);
+                    getReviews(selectedCategory, value, order).then(
+                      (reviewsFromApi) => {
+                        setReviews(reviewsFromApi);
+                      }
+                    );
+                  }}
+                  type="radio"
+                  name="sort-by"
+                  value="owner"
+                />
                 <label className="radio-label" htmlFor="owner">
                   OWNER
                 </label>
               </div>
               <div className="radio-pairs">
-                <input type="radio" name="sort-by" value="created" />
+                <input
+                  onChange={({ target: { value } }) => {
+                    setSortBy(value);
+                    getReviews(selectedCategory, value, order).then(
+                      (reviewsFromApi) => {
+                        setReviews(reviewsFromApi);
+                      }
+                    );
+                  }}
+                  type="radio"
+                  name="sort-by"
+                  value="created_at"
+                />
                 <label className="radio-label" htmlFor="created">
                   CREATED
                 </label>
               </div>
               <div className="radio-pairs">
-                <input type="radio" name="sort-by" value="votes" />
+                <input
+                  onChange={({ target: { value } }) => {
+                    setSortBy(value);
+                    getReviews(selectedCategory, value, order).then(
+                      (reviewsFromApi) => {
+                        setReviews(reviewsFromApi);
+                      }
+                    );
+                  }}
+                  type="radio"
+                  name="sort-by"
+                  value="votes"
+                />
                 <label className="radio-label" htmlFor="votes">
                   VOTES
                 </label>
@@ -85,13 +133,37 @@ export default function Reviews() {
             <h6 className="white sort-title">Order By:</h6>
             <div className="sort-radio">
               <div className="radio-pairs">
-                <input type="radio" name="order" value="asc" />
+                <input
+                  onChange={({ target: { value } }) => {
+                    setOrder(value);
+                    getReviews(selectedCategory, sortBy, value).then(
+                      (reviewsFromApi) => {
+                        setReviews(reviewsFromApi);
+                      }
+                    );
+                  }}
+                  type="radio"
+                  name="order"
+                  value="asc"
+                />
                 <label className="radio-label" htmlFor="asc">
                   ASC
                 </label>
               </div>
               <div className="radio-pairs">
-                <input type="radio" name="order" value="desc" />
+                <input
+                  onChange={({ target: { value } }) => {
+                    setOrder(value);
+                    getReviews(selectedCategory, sortBy, value).then(
+                      (reviewsFromApi) => {
+                        setReviews(reviewsFromApi);
+                      }
+                    );
+                  }}
+                  type="radio"
+                  name="order"
+                  value="desc"
+                />
                 <label className="radio-label" htmlFor="desc">
                   DESC
                 </label>
@@ -119,6 +191,7 @@ export default function Reviews() {
                 <UpVote id={review.review_id} reviewVotes={review.votes} />
               </div>
               <h4>{review.title}</h4>
+              <h6>Category: {review.category}</h6>
             </FancyCard>
           </div>
         );
