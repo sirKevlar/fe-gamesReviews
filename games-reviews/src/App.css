@@ -1,7 +1,7 @@
 /* -------WHOLE APP------- */
 html {
   min-width: 370px;
-  background-image: linear-gradient(to bottom right, #0080d5, #47c5fd);
+  background-color: #0080d5;
 }
 
 .App {
@@ -64,7 +64,7 @@ main {
   align-items: center;
   justify-content: space-between;
   background-color: #ffe600;
-  box-shadow: 0 0 10px 5px grey;
+  box-shadow: 0 0 8px 4px lightgrey;
 }
 
 .header-content {
@@ -89,13 +89,28 @@ main {
 .logout {
   position: fixed;
   z-index: 1000;
-  margin-top: -7.4vh;
-  border-radius: 3px;
+  margin-top: -7.8vh;
+  border-radius: 50%;
   background-color: #47c5fd;
   color: black;
   font-size: 0.8em;
   font-weight: 600;
   right: 11vh;
+  height: 4vh;
+  width: 4vh;
+  border: none;
+  box-shadow: 0 0 2px 2px red;
+}
+
+.logout:hover {
+  box-shadow: 0 0 4px 4px magenta;
+  cursor: pointer;
+}
+
+.logout-icon {
+  padding-top: 2px;
+  height: 3vh;
+  width: 3vh;
 }
 
 /* -------LOGIN PAGE------- */
@@ -118,7 +133,7 @@ main {
   width: 80%;
   max-width: 500px;
   margin: 1rem 0 1rem 0;
-  box-shadow: 0 0 10px 5px grey;
+  box-shadow: 0 0 8px 4px lightgrey;
   border-radius: 10px;
 }
 
@@ -156,7 +171,7 @@ main {
 }
 
 .vote-button:hover {
-  background-color: #f52942;
+  background-color: magenta;
   cursor: pointer;
 }
 
@@ -164,23 +179,17 @@ main {
   width: 80%;
 }
 
-.sidenav {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  position: fixed;
-  width: 100%;
-  height: 88vh;
-  margin-top: 10px;
-  margin-left: 20px;
+.menu-icon {
+  height: 4vh;
+  width: 4vh;
 }
 
 .popout {
   background-color: rgb(46, 46, 46);
   margin-top: 10px;
   opacity: 0.95;
-  width: 40%;
-  height: 80%;
+  width: 35vw;
+  height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -188,6 +197,56 @@ main {
 }
 .sidenav-close,
 .sidenav-open {
-  height: 8vh;
-  width: 8vh;
+  height: 7vh;
+  width: 7vh;
+  background-color: #0080d5;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 0 2px 2px red;
+}
+
+.sidenav-open:hover,
+.sidenav-close:hover {
+  box-shadow: 0 0 4px 4px magenta;
+}
+
+.sidenav-close {
+  left: 0;
+}
+
+.sidenav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: fixed;
+  left: 1%;
+  top: 13vh;
+}
+
+.sidenav-top,
+.sidenav-bottom {
+  background-color: rgba(21, 21, 21, 0.892);
+  width: 80%;
+  border: 2px solid black;
+}
+
+.sidenav-top {
+  height: 60%;
+  margin: 1rem;
+}
+
+.sidenav-bottom {
+  height: 40%;
+  margin: 0 1rem 1rem 1rem;
+}
+
+.category {
+  margin: 0 0.4rem;
+  height: 4.4%;
+  background-color: #ffe600;
+}
+
+.category:hover {
+  box-shadow: 0 0 2px 2px red;
+  cursor: pointer;
 }

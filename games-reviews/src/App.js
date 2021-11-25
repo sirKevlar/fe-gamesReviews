@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import { UserContext } from "./contexts/UserContext";
 import RequireLogin from "./components/RequireLogin";
 import Main from "./pages/Main";
+import logoutIcon from "./assets/logout (1).png";
 
 function App() {
   const { user, setUser, isLoggedIn, logout } = useContext(UserContext);
@@ -18,7 +19,11 @@ function App() {
             <div>
               <Link to="/">
                 <button className="logout" onClick={logout}>
-                  <i classnames="fas fa-sign-out-alt">OUT</i>
+                  <img
+                    className="logout-icon"
+                    src={logoutIcon}
+                    alt="logout icon"
+                  />
                 </button>
               </Link>
               <Main />

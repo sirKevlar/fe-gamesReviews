@@ -19,9 +19,19 @@ export const getReviewById = async (id) => {
   return reviewObj.data.review;
 };
 
+export const getReviewsByCategory = async (category) => {
+  const reviewsObj = await boardGamesApi.get(`/reviews?category=${category}`);
+  return reviewsObj.data.reviews;
+};
+
 export const upVote = async () => {
   console.log("upVOTE");
 };
 export const downVote = async () => {
   console.log("downVOTE");
+};
+
+export const getCategories = async () => {
+  const categoryObj = await boardGamesApi.get("/categories");
+  return categoryObj.data.categories;
 };

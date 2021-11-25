@@ -3,14 +3,26 @@ import { Link } from "react-router-dom";
 import FancyCard from "../components/FancyCard";
 import SideNav from "../components/SideNav";
 import UpVote from "../components/UpVote";
-import { getReviews } from "../utils/apiCall";
+import {
+  getReviews,
+  getCategories,
+  getReviewsByCategory,
+} from "../utils/apiCall";
 
 export default function Reviews() {
   const [reviews, setReviews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [categories, setCategories] = useState([]);
   useEffect(() => {
     getReviews().then((reviewsFromApi) => {
       setReviews(reviewsFromApi);
+      setIsLoading(false);
+    });
+  }, []);
+
+  useEffect(() => {
+    getCategories().then((categoriesFromApi) => {
+      setCategories(categoriesFromApi);
       setIsLoading(false);
     });
   }, []);
@@ -19,10 +31,29 @@ export default function Reviews() {
 
   return (
     <main>
-      <h2>Check these reviews...</h2>
       <SideNav>
-        <h3>SN!</h3>
+        <div className="sidenav-top">
+          {categories.map((category) => {
+            return (
+              <div
+                onClick={(e) => {
+                  getReviewsByCategory(category.slug).then((reviews) => {
+                    setReviews(reviews);
+                  });
+                }}
+                className="category"
+                value={category.slug}
+                id={category.slug}
+                key={category.slug}
+              >
+                <h6>{category.slug}</h6>
+              </div>
+            );
+          })}
+        </div>
+        <div className="sidenav-bottom">m</div>
       </SideNav>
+      <h2>Reviews...</h2>
 
       {reviews.map((review) => {
         const reviewUrl = `/reviews/${review.review_id}`;
