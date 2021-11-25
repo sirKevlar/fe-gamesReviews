@@ -24,6 +24,7 @@ main {
   font-family: "Courier New", Courier, monospace;
   font-weight: 700;
   display: flex;
+  padding-top: 1rem;
   flex-direction: column;
   flex-flow: column wrap;
   align-items: center;
@@ -49,9 +50,6 @@ main {
   width: 100%;
 }
 
-.link:hover {
-  opacity: 0.5;
-}
 /* -------HEADER------- */
 .header {
   z-index: 1000;
@@ -100,6 +98,7 @@ main {
   width: 4vh;
   border: none;
   box-shadow: 0 0 2px 2px red;
+  opacity: 0.8;
 }
 
 .logout:hover {
@@ -129,11 +128,11 @@ main {
 
 /* -------CARD------- */
 .fancy-card {
-  background-color: #f52942;
+  background-color: red;
   width: 80%;
   max-width: 500px;
   margin: 1rem 0 1rem 0;
-  box-shadow: 0 0 8px 4px lightgrey;
+  /* box-shadow: 0 0 8px 4px lightgrey; */
   border-radius: 10px;
 }
 
@@ -145,6 +144,12 @@ main {
   background-size: cover;
   max-width: 185px;
   max-height: 185px;
+  box-shadow: 0 0 3px 3px darkred;
+}
+
+.review-image:hover {
+  opacity: 0.8;
+  box-shadow: 0 0 6px 6px darkmagenta;
 }
 
 .review-sub-one {
@@ -168,10 +173,13 @@ main {
   padding: 0.2rem;
   border-radius: 20%;
   background-color: #ffe600;
+  box-shadow: 0 0 2px 2px darkred;
+  border: none;
+  margin: 0 4px;
 }
 
 .vote-button:hover {
-  background-color: magenta;
+  box-shadow: 0 0 4px 4px darkmagenta;
   cursor: pointer;
 }
 
@@ -188,26 +196,28 @@ main {
   background-color: rgb(46, 46, 46);
   margin-top: 10px;
   opacity: 0.95;
-  width: 35vw;
+  width: 140%;
   height: 70vh;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   border-radius: 5px;
+  padding: 0.2rem;
 }
 .sidenav-close,
 .sidenav-open {
   height: 7vh;
   width: 7vh;
-  background-color: #0080d5;
+  background-color: #0080d500;
   border: none;
   border-radius: 5px;
-  box-shadow: 0 0 2px 2px red;
+  opacity: 0.6;
+  z-index: 200;
 }
 
 .sidenav-open:hover,
 .sidenav-close:hover {
-  box-shadow: 0 0 4px 4px magenta;
+  box-shadow: 0 0 2px 2px magenta;
 }
 
 .sidenav-close {
@@ -219,15 +229,20 @@ main {
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  left: 1%;
-  top: 13vh;
+  left: 2%;
+  top: 13.5vh;
+  font-size: 1.3em;
 }
 
 .sidenav-top,
 .sidenav-bottom {
   background-color: rgba(21, 21, 21, 0.892);
-  width: 80%;
   border: 2px solid black;
+  width: 84%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 0.5rem 0;
 }
 
 .sidenav-top {
@@ -240,13 +255,43 @@ main {
   margin: 0 1rem 1rem 1rem;
 }
 
+.sidenav-bottom-top,
+.sidenav-bottom-bottom {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
 .category {
   margin: 0 0.4rem;
-  height: 4.4%;
+  height: 20px;
   background-color: #ffe600;
+  border-radius: 2px;
 }
 
 .category:hover {
   box-shadow: 0 0 2px 2px red;
   cursor: pointer;
+}
+
+.slug {
+  padding: 0;
+  margin: 0;
+}
+
+.white {
+  color: aliceblue;
+  margin: 0.5rem;
+}
+
+.sort-radio {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0 32%;
+  font-size: 0.6em;
+}
+
+.sort-title {
+  margin-top: 0;
 }

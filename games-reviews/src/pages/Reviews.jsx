@@ -46,12 +46,59 @@ export default function Reviews() {
                 id={category.slug}
                 key={category.slug}
               >
-                <h6>{category.slug}</h6>
+                <h6 className="slug">{category.slug}</h6>
               </div>
             );
           })}
         </div>
-        <div className="sidenav-bottom">m</div>
+        <div className="sidenav-bottom white">
+          <div className="sidenav-bottom-top">
+            <h6 className="white sort-title">Sort By:</h6>
+            <div className="sort-radio">
+              <div className="radio-pairs">
+                <input type="radio" name="sort-by" value="title" />
+                <label className="radio-label" htmlFor="title">
+                  TITLE
+                </label>
+              </div>
+              <div className="radio-pairs">
+                <input type="radio" name="sort-by" value="owner" />
+                <label className="radio-label" htmlFor="owner">
+                  OWNER
+                </label>
+              </div>
+              <div className="radio-pairs">
+                <input type="radio" name="sort-by" value="created" />
+                <label className="radio-label" htmlFor="created">
+                  CREATED
+                </label>
+              </div>
+              <div className="radio-pairs">
+                <input type="radio" name="sort-by" value="votes" />
+                <label className="radio-label" htmlFor="votes">
+                  VOTES
+                </label>
+              </div>
+            </div>
+          </div>
+          <div className="sidenav-bottom-bottom">
+            <h6 className="white sort-title">Order By:</h6>
+            <div className="sort-radio">
+              <div className="radio-pairs">
+                <input type="radio" name="order" value="asc" />
+                <label className="radio-label" htmlFor="asc">
+                  ASC
+                </label>
+              </div>
+              <div className="radio-pairs">
+                <input type="radio" name="order" value="desc" />
+                <label className="radio-label" htmlFor="desc">
+                  DESC
+                </label>
+              </div>
+            </div>
+          </div>
+        </div>
       </SideNav>
       <h2>Reviews...</h2>
 
