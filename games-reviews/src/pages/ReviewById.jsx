@@ -1,14 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
+import { UserContext } from "../contexts/UserContext";
 import FancyCard from "../components/FancyCard";
 import UpVote from "../components/UpVote";
 import { getReviewById, getCommentsByReviewId } from "../utils/apiCall";
 
 export default function ReviewById() {
+  const user = useContext(UserContext);
   const [review, setReview] = useState([]);
   const [commentCount, setCommentCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
+  const [addComment, setAddComment] = useState("");
   const { reviewId } = useParams();
 
   useEffect(() => {
@@ -43,16 +46,34 @@ export default function ReviewById() {
         <h6 className="review-body">{review.review_body}</h6>
         <UpVote id={review.review_id} reviewVotes={review.votes} />
       </FancyCard>
-      <div className="comment-input">
+      <form className="comment-input">
         <input
           id="comment-textbox"
           type="text"
           placeholder="Leave your comment here..."
+          value={addComment}
+          onChange={(e) => setAddComment(e.target.value)}
         />
-      </div>
+        <button
+          className="post-button"
+          onClick={(e) => {
+            e.preventDefault();
+            const commentToInsert = {
+              author: user.user.username,
+              body: addComment,
+            };
+            const newComments = [commentToInsert, ...comments];
+            console.log(newComments);
+            setComments(newComments);
+            // postComment;
+          }}
+        >
+          POST
+        </button>
+      </form>
       {comments.map((comment) => {
         return (
-          <FancyCard>
+          <FancyCard key={comment.body} commentBody={comment.body}>
             <div className="comments">
               <h5 className="comments-h5">{comment.author}</h5>
               <div className="comments-bottom">

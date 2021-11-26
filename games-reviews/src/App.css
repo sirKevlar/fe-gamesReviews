@@ -169,7 +169,7 @@ main {
 }
 
 .vote-button {
-  font-size: 2em;
+  font-size: 1.5em;
   padding: 0.2rem;
   border-radius: 20%;
   background-color: #ffe600;
@@ -254,7 +254,7 @@ main {
 
 .sidenav-bottom {
   height: 40%;
-  margin: 0 1rem 1rem 1rem;
+  margin: 1rem;
 }
 
 .sidenav-bottom-top,
@@ -283,7 +283,8 @@ main {
 
 .white {
   color: aliceblue;
-  margin: 0.5rem;
+  margin: 0 1rem 1rem 1rem;
+  font-size: 0.85em;
 }
 
 .sort-radio {
@@ -295,7 +296,7 @@ main {
 }
 
 .sort-title {
-  margin-top: 0;
+  margin-bottom: 0.3em;
 }
 
 .comment-input {
@@ -308,7 +309,7 @@ main {
 #comment-textbox {
   width: 90%;
   height: 10vh;
-  margin: 1rem 0;
+  margin: 1rem 0 0.4rem 0;
   border-radius: 5px;
   text-align: center;
 }
@@ -332,7 +333,8 @@ main {
 
 .comment-vote {
   margin: 0.3rem;
-  font-size: 0.8em;
+  font-size: 0.7em;
+  padding-right: 0.5em;
 }
 
 .comment-body {
@@ -340,6 +342,7 @@ main {
   width: 80%;
   height: inherit;
   margin: 0 10px 10px 10px;
+  padding: 1rem;
 }
 
 .small-votes {
@@ -347,4 +350,21 @@ main {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
+}
+
+.post-button {
+  margin-bottom: 0.4rem;
+  font-size: 0.8em;
+  width: 92%;
+  border-radius: 5px;
+  background-color: red;
+  color: aliceblue;
+  font-weight: 700;
+  border: none;
+  box-shadow: 0 0 2px 1px darkgrey;
+}
+
+.post-button:hover {
+  box-shadow: 0 0 3px 2px magenta;
 }

@@ -1,3 +1,7 @@
-export default function FancyCard({ children }) {
-  return <section className="fancy-card">{children}</section>;
+export default function FancyCard({ children, commentBody }) {
+  return (
+    <section key={commentBody} className="fancy-card">
+      {children}
+    </section>
+  );
 }
