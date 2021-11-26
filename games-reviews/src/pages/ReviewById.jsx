@@ -3,7 +3,11 @@ import { useParams } from "react-router";
 import { UserContext } from "../contexts/UserContext";
 import FancyCard from "../components/FancyCard";
 import UpVote from "../components/UpVote";
-import { getReviewById, getCommentsByReviewId } from "../utils/apiCall";
+import {
+  getReviewById,
+  getCommentsByReviewId,
+  postComment,
+} from "../utils/apiCall";
 
 export default function ReviewById() {
   const user = useContext(UserContext);
@@ -44,7 +48,11 @@ export default function ReviewById() {
         <h5>Comment Count: {commentCount}</h5>
         <h5>Contributor: {review.owner}</h5>
         <h6 className="review-body">{review.review_body}</h6>
-        <UpVote id={review.review_id} reviewVotes={review.votes} />
+        <UpVote
+          id={review.review_id}
+          recievedVotes={review.votes}
+          type="review"
+        />
       </FancyCard>
       <form className="comment-input">
         <input
@@ -59,13 +67,18 @@ export default function ReviewById() {
           onClick={(e) => {
             e.preventDefault();
             const commentToInsert = {
-              author: user.user.username,
+              username: user.user.username,
               body: addComment,
             };
             const newComments = [commentToInsert, ...comments];
-            console.log(newComments);
             setComments(newComments);
-            // postComment;
+            postComment(reviewId, commentToInsert)
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((err) => {
+                console.log(err);
+              });
           }}
         >
           POST
@@ -83,8 +96,9 @@ export default function ReviewById() {
                 <div className="small-votes">
                   <UpVote
                     addClass="comment-vote"
-                    id={reviewId}
-                    reviewVotes={comment.votes}
+                    id={comment.comment_id}
+                    recievedVotes={comment.votes}
+                    type="comment"
                   />
                 </div>
               </div>

@@ -2,15 +2,15 @@ import { useState, useEffect } from "react";
 import { upVote } from "../utils/apiCall";
 import { downVote } from "../utils/apiCall";
 
-export default function UpVote({ reviewVotes, review_id, addClass }) {
+export default function UpVote({ recievedVotes, id, addClass, type }) {
   const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const classToAdd = `vote-button ${addClass}`;
 
   useEffect(() => {
-    setVotes(reviewVotes);
+    setVotes(recievedVotes);
     setIsLoading(false);
-  }, [reviewVotes]);
+  }, [recievedVotes]);
 
   if (isLoading) return <h5>Be Patient...</h5>;
 
@@ -23,7 +23,7 @@ export default function UpVote({ reviewVotes, review_id, addClass }) {
             setVotes((currVotes) => {
               return currVotes + 1;
             });
-            upVote(review_id);
+            upVote(id, type);
           }}
           className={classToAdd}
         >
@@ -35,7 +35,7 @@ export default function UpVote({ reviewVotes, review_id, addClass }) {
             setVotes((currVotes) => {
               return currVotes - 1;
             });
-            downVote(review_id);
+            downVote(id, type);
           }}
           className={classToAdd}
         >

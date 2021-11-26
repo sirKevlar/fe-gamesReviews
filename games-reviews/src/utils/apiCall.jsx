@@ -32,11 +32,35 @@ export const getCommentsByReviewId = async (id) => {
   return commentObj.data.comments;
 };
 
-export const upVote = async () => {
-  console.log("upVOTE");
+export const postComment = async (reviewId, comment) => {
+  console.log(comment);
+  const confirmation = await boardGamesApi.post(
+    `/reviews/${reviewId}/comments`,
+    comment
+  );
+  return confirmation.data;
 };
-export const downVote = async () => {
-  console.log("downVOTE");
+
+export const upVote = async (id, type) => {
+  if (type === "comment") {
+    const confirmation = await boardGamesApi.patch(`/comments/${id}`, {
+      inc_votes: 1,
+    });
+    return confirmation.data;
+  } else {
+    console.log(`${type} up voting not yet supported. Sort the BE out Kev!`);
+  }
+};
+
+export const downVote = async (id, type) => {
+  if (type === "comment") {
+    const confirmation = await boardGamesApi.patch(`/comments/${id}`, {
+      inc_votes: -1,
+    });
+    return confirmation.data;
+  } else {
+    console.log(`${type} down voting not yet supported. Sort the BE out Kev!`);
+  }
 };
 
 export const getCategories = async () => {

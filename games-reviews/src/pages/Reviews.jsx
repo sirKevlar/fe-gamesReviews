@@ -188,7 +188,11 @@ export default function Reviews({ reviews, setReviews }) {
                     className="review-image"
                   />
                 </Link>
-                <UpVote id={review.review_id} reviewVotes={review.votes} />
+                <UpVote
+                  id={review.review_id}
+                  recievedVotes={review.votes}
+                  type="review"
+                />
               </div>
               <h4>{review.title}</h4>
               <h6>Category: {review.category}</h6>
