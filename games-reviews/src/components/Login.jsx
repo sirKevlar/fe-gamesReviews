@@ -5,6 +5,7 @@ import { getUsers } from "../utils/apiCall";
 const Login = () => {
   const [usersFromApi, setUsersFromApi] = useState([]);
   const [username, setUsername] = useState("");
+  const [userIsNotValid, setUserIsNotValid] = useState(false);
   const { setUser } = useContext(UserContext);
 
   useEffect(() => {
@@ -23,14 +24,22 @@ const Login = () => {
     if (matchingUser) {
       setUser(matchingUser);
     } else {
-      setUsername("INVALID USER");
+      setUserIsNotValid(true);
+      setTimeout(() => {
+        setUserIsNotValid(false);
+      }, 2000);
     }
   };
 
   return (
     <main className="login-page">
-      <form onSubmit={handleSubmit}>
+      <form className="login-contents" onSubmit={handleSubmit}>
         <h2 id="user-heading">PLEASE ENTER USERNAME</h2>
+        {userIsNotValid && (
+          <div className="warning">
+            <h3>WARNING: {username}'s not a user I recognise 🥲</h3>
+          </div>
+        )}
         <label>
           Username:
           <input

@@ -19,13 +19,13 @@ function App() {
           {isLoggedIn ? (
             <div>
               <Link to="/">
-                <button className="logout" onClick={logout}>
+                <div className="logout" onClick={logout}>
                   <img
                     className="logout-icon"
                     src={logoutIcon}
                     alt="logout icon"
                   />
-                </button>
+                </div>
               </Link>
               <Main reviews={reviews} setReviews={setReviews} />
             </div>

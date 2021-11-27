@@ -1,7 +1,13 @@
 /* -------WHOLE APP------- */
 html {
-  min-width: 370px;
-  background-color: #0080d5;
+  background-image: url("./assets/pexels-pixabay-278918.jpg");
+  height: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+  background-color: rgba(210, 110, 255, 0.55);
+  background-blend-mode: luminosity;
 }
 
 .App {
@@ -9,7 +15,7 @@ html {
   height: 100vh;
   width: 100vw;
   display: grid;
-  grid-template-rows: 12vh auto;
+  grid-template-rows: 110px auto;
   grid-template-areas:
     "header"
     "main";
@@ -21,8 +27,7 @@ html {
 }
 
 main {
-  font-family: "Courier New", Courier, monospace;
-  font-weight: 700;
+  font-weight: 500;
   display: flex;
   padding-top: 1rem;
   flex-direction: column;
@@ -30,14 +35,19 @@ main {
   align-items: center;
   position: absolute;
   width: 100%;
+  color: rgb(247, 230, 255);
 }
 
 .link {
   text-decoration: none;
   width: min-content;
+  color: rgb(205, 100, 255);
 }
 
-.link,
+.link:hover {
+  color: magenta;
+}
+
 .rev-card {
   display: flex;
   flex-direction: column;
@@ -50,6 +60,28 @@ main {
   width: 100%;
 }
 
+h2 {
+  font-size: 1.5em;
+}
+
+h3 {
+  font-size: 1.3em;
+}
+
+h4 {
+  font-size: 1em;
+}
+
+h5 {
+  font-size: 0.8em;
+  font-weight: 300;
+}
+
+h6 {
+  font-size: 0.7em;
+  font-weight: 500;
+}
+
 /* -------HEADER------- */
 .header {
   z-index: 1000;
@@ -57,16 +89,21 @@ main {
   position: fixed;
   top: 0;
   width: 100%;
-  height: 12vh;
+  min-width: 360px;
+  height: 110px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background-color: #ffe600;
-  box-shadow: 0 0 8px 4px lightgrey;
+  background-image: linear-gradient(
+    to bottom right,
+    rgba(191, 0, 255, 0.9),
+    rgba(255, 234, 0, 0.9)
+  );
+  box-shadow: 0 0 8px 4px grey;
 }
 
 .header-content {
-  height: 10vh;
+  height: 70px;
   margin-left: 1rem;
   margin-right: 1rem;
 }
@@ -77,25 +114,23 @@ main {
   align-items: center;
   background-color: #f52942;
   border-radius: 50%;
-  height: 8vh;
-  width: 8vh;
+  margin-right: 30px;
+  height: 70px;
+  width: 70px;
   font-size: 0.8em;
-  font-weight: 600;
+  font-weight: 700;
   color: aliceblue;
 }
 
 .logout {
   position: fixed;
   z-index: 1000;
-  margin-top: -7.8vh;
+  top: 8px;
+  right: 8px;
   border-radius: 50%;
   background-color: #47c5fd;
-  color: black;
-  font-size: 0.8em;
-  font-weight: 600;
-  right: 11vh;
-  height: 4vh;
-  width: 4vh;
+  height: 24px;
+  width: 24px;
   border: none;
   box-shadow: 0 0 2px 2px red;
   opacity: 0.8;
@@ -107,9 +142,10 @@ main {
 }
 
 .logout-icon {
-  padding-top: 2px;
-  height: 3vh;
-  width: 3vh;
+  margin-right: 1px;
+  margin-top: 1px;
+  height: 20px;
+  width: 20px;
 }
 
 /* -------LOGIN PAGE------- */
@@ -123,33 +159,47 @@ main {
 
 #user-heading {
   margin-top: 0;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
+}
+
+.warning {
+  position: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f529417c;
+  top: 30px;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.login-contents {
+  margin-bottom: 5rem;
+  color: black;
 }
 
 /* -------CARD------- */
 .fancy-card {
-  background-color: red;
+  background-color: rgba(33, 30, 32, 0.9);
   width: 80%;
-  max-width: 500px;
+  max-width: 800px;
+  min-width: 300px;
   margin: 1rem 0 1rem 0;
   /* box-shadow: 0 0 8px 4px lightgrey; */
   border-radius: 10px;
+  color: rgb(247, 230, 255);
 }
 
 .review-image {
-  width: 30vw;
-  height: 30vw;
+  width: 50%;
+  height: 130px;
   margin: 1rem;
   border-radius: 5% 40% 20% 5%;
   background-size: cover;
   max-width: 185px;
   max-height: 185px;
-  box-shadow: 0 0 3px 3px darkred;
-}
-
-.review-image:hover {
-  opacity: 0.8;
-  box-shadow: 0 0 6px 6px darkmagenta;
+  box-shadow: 0 0 3px 3px rgb(170, 0, 255);
 }
 
 .review-sub-one {
@@ -169,11 +219,11 @@ main {
 }
 
 .vote-button {
-  font-size: 1.5em;
-  padding: 0.2rem;
+  font-size: 1.2em;
+  padding: 5px 8px;
   border-radius: 20%;
-  background-color: #ffe600;
-  box-shadow: 0 0 2px 2px darkred;
+  background-color: rgba(0, 0, 0, 0.66);
+  box-shadow: 0 0 1px 1px rgb(170, 0, 255);
   border: none;
   margin: 0 4px;
 }
@@ -188,8 +238,8 @@ main {
 }
 
 .menu-icon {
-  height: 4vh;
-  width: 4vh;
+  height: 40px;
+  width: 40px;
 }
 
 .popout {
@@ -198,6 +248,7 @@ main {
   opacity: 0.95;
   width: 140%;
   height: 70vh;
+  min-height: 420px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -206,8 +257,8 @@ main {
 }
 .sidenav-close,
 .sidenav-open {
-  height: 7vh;
-  width: 7vh;
+  height: 60px;
+  width: 60px;
   background-color: #0080d500;
   border: none;
   border-radius: 5px;
@@ -229,8 +280,8 @@ main {
   flex-direction: column;
   align-items: flex-start;
   position: fixed;
-  left: 2%;
-  top: 13.5vh;
+  left: 10px;
+  top: 120px;
   font-size: 1.3em;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-weight: 500;
@@ -261,61 +312,72 @@ main {
 .sidenav-bottom-bottom {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
 }
 
 .category {
   margin: 0 0.4rem;
   height: 20px;
-  background-color: #ffe600;
+  background-color: #000000;
   border-radius: 2px;
+  padding: 5px 0;
 }
 
 .category:hover {
-  box-shadow: 0 0 2px 2px red;
+  color: rgb(170, 0, 255);
+  box-shadow: 0 0 2px 2px rgb(170, 0, 255);
   cursor: pointer;
 }
 
 .slug {
-  padding: 0;
   margin: 0;
+  font-size: 0.7em;
+  font-weight: 700;
 }
 
 .white {
   color: aliceblue;
   margin: 0 1rem 1rem 1rem;
-  font-size: 0.85em;
+}
+
+#order-by {
+  margin-top: 0.5em;
 }
 
 .sort-radio {
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 0 30%;
-  font-size: 0.6em;
+  font-size: 0.65em;
+  justify-content: center;
 }
 
 .sort-title {
   margin-bottom: 0.3em;
 }
 
+.radio-pairs {
+  display: flex;
+  align-items: center;
+  padding: 0.3em;
+  margin: 0.2em;
+}
+
 .comment-input {
-  width: 80%;
+  margin: 2rem;
+  width: 70%;
   max-width: 500px;
-  background-color: #ffe600;
+  background-color: #9500ffcf;
   border-radius: 5px;
 }
 
 #comment-textbox {
   width: 90%;
-  height: 10vh;
+  height: 8vh;
   margin: 1rem 0 0.4rem 0;
   border-radius: 5px;
   text-align: center;
 }
 
 .comments {
-  background-color: #ffe600;
+  background-color: rgba(32, 1, 43, 0.769);
   width: 96%;
   margin-left: auto;
   margin-right: auto;
@@ -324,6 +386,7 @@ main {
 }
 
 .comments-h5 {
+  padding-top: 0.5rem;
   margin: 0.5rem 0;
 }
 
@@ -334,10 +397,11 @@ main {
 .comment-vote {
   margin: 0.3rem;
   font-size: 0.7em;
-  padding-right: 0.5em;
+  padding-bottom: 0.7em;
 }
 
 .comment-body {
+  color: black;
   background-color: aliceblue;
   width: 80%;
   height: inherit;
@@ -346,7 +410,7 @@ main {
 }
 
 .small-votes {
-  width: 20%;
+  width: 25%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -358,7 +422,7 @@ main {
   font-size: 0.8em;
   width: 92%;
   border-radius: 5px;
-  background-color: red;
+  background-color: rgba(0, 0, 0, 0.571);
   color: aliceblue;
   font-weight: 700;
   border: none;

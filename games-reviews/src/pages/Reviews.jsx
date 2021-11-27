@@ -53,84 +53,90 @@ export default function Reviews({ reviews, setReviews }) {
         </div>
         <div className="sidenav-bottom white">
           <div className="sidenav-bottom-top">
-            <h6 className="white sort-title">Sort By:</h6>
+            <h5 className="white sort-title">Sort By:</h5>
             <div className="sort-radio">
-              <div className="radio-pairs">
-                <input
-                  onChange={({ target: { value } }) => {
-                    setSortBy(value);
-                    getReviews(selectedCategory, value, order).then(
-                      (reviewsFromApi) => {
-                        setReviews(reviewsFromApi);
-                      }
-                    );
-                  }}
-                  type="radio"
-                  name="sort-by"
-                  value="title"
-                />
-                <label className="radio-label" htmlFor="title">
-                  TITLE
-                </label>
+              <div className="sort-radio-left">
+                <div className="radio-pairs">
+                  <input
+                    onChange={({ target: { value } }) => {
+                      setSortBy(value);
+                      getReviews(selectedCategory, value, order).then(
+                        (reviewsFromApi) => {
+                          setReviews(reviewsFromApi);
+                        }
+                      );
+                    }}
+                    type="radio"
+                    name="sort-by"
+                    value="title"
+                  />
+                  <label className="radio-label" htmlFor="title">
+                    TITLE
+                  </label>
+                </div>
+                <div className="radio-pairs">
+                  <input
+                    onChange={({ target: { value } }) => {
+                      setSortBy(value);
+                      getReviews(selectedCategory, value, order).then(
+                        (reviewsFromApi) => {
+                          setReviews(reviewsFromApi);
+                        }
+                      );
+                    }}
+                    type="radio"
+                    name="sort-by"
+                    value="votes"
+                  />
+                  <label className="radio-label" htmlFor="votes">
+                    VOTES
+                  </label>
+                </div>
               </div>
-              <div className="radio-pairs">
-                <input
-                  onChange={({ target: { value } }) => {
-                    setSortBy(value);
-                    getReviews(selectedCategory, value, order).then(
-                      (reviewsFromApi) => {
-                        setReviews(reviewsFromApi);
-                      }
-                    );
-                  }}
-                  type="radio"
-                  name="sort-by"
-                  value="owner"
-                />
-                <label className="radio-label" htmlFor="owner">
-                  OWNER
-                </label>
-              </div>
-              <div className="radio-pairs">
-                <input
-                  onChange={({ target: { value } }) => {
-                    setSortBy(value);
-                    getReviews(selectedCategory, value, order).then(
-                      (reviewsFromApi) => {
-                        setReviews(reviewsFromApi);
-                      }
-                    );
-                  }}
-                  type="radio"
-                  name="sort-by"
-                  value="created_at"
-                />
-                <label className="radio-label" htmlFor="created">
-                  CREATED
-                </label>
-              </div>
-              <div className="radio-pairs">
-                <input
-                  onChange={({ target: { value } }) => {
-                    setSortBy(value);
-                    getReviews(selectedCategory, value, order).then(
-                      (reviewsFromApi) => {
-                        setReviews(reviewsFromApi);
-                      }
-                    );
-                  }}
-                  type="radio"
-                  name="sort-by"
-                  value="votes"
-                />
-                <label className="radio-label" htmlFor="votes">
-                  VOTES
-                </label>
+              <div className="sort-radio-right">
+                <div className="radio-pairs">
+                  <input
+                    onChange={({ target: { value } }) => {
+                      setSortBy(value);
+                      getReviews(selectedCategory, value, order).then(
+                        (reviewsFromApi) => {
+                          setReviews(reviewsFromApi);
+                        }
+                      );
+                    }}
+                    type="radio"
+                    name="sort-by"
+                    value="owner"
+                  />
+                  <label className="radio-label" htmlFor="owner">
+                    OWNER
+                  </label>
+                </div>
+                <div className="radio-pairs">
+                  <input
+                    onChange={({ target: { value } }) => {
+                      setSortBy(value);
+                      getReviews(selectedCategory, value, order).then(
+                        (reviewsFromApi) => {
+                          setReviews(reviewsFromApi);
+                        }
+                      );
+                    }}
+                    type="radio"
+                    name="sort-by"
+                    value="created_at"
+                  />
+                  <label className="radio-label" htmlFor="created">
+                    CREATED
+                  </label>
+                </div>
               </div>
             </div>
           </div>
           <div className="sidenav-bottom-bottom">
-            <h6 className="white sort-title">Order By:</h6>
+            <h5 id="order-by" className="white sort-title">
+              Order By:
+            </h5>
             <div className="sort-radio">
               <div className="radio-pairs">
                 <input
@@ -181,20 +187,20 @@ export default function Reviews({ reviews, setReviews }) {
           <div key={review.title} className="rev-card">
             <FancyCard>
               <div className="review-sub-one">
-                <Link className="link" to={reviewUrl}>
-                  <img
-                    src={review.review_img_url}
-                    alt={review.title}
-                    className="review-image"
-                  />
-                </Link>
+                <img
+                  src={review.review_img_url}
+                  alt={review.title}
+                  className="review-image"
+                />
                 <UpVote
                   id={review.review_id}
                   recievedVotes={review.votes}
                   type="review"
                 />
               </div>
-              <h4>{review.title}</h4>
+              <Link className="link" to={reviewUrl}>
+                <h3>{review.title}</h3>
+              </Link>
               <h6>Category: {review.category}</h6>
             </FancyCard>
           </div>

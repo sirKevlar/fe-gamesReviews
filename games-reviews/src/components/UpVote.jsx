@@ -16,7 +16,7 @@ export default function UpVote({ recievedVotes, id, addClass, type }) {
 
   return (
     <div className="review-sub-two">
-      <h3 className={addClass}>VOTES {votes}</h3>
+      <h5 className={addClass}>VOTES {votes}</h5>
       <div>
         <button
           onClick={() => {
