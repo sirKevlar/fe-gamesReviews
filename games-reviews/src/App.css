@@ -247,6 +247,9 @@ h6 {
     margin-top: 1.3rem;
     margin-bottom: 1rem;
   }
+  h5.comment-vote {
+    margin-top: 0;
+  }
   .vote-button {
     margin-bottom: 0.4rem;
   }
@@ -434,7 +437,7 @@ h6 {
   height: inherit;
   margin: 0 10px 10px 10px;
   padding: 0.4rem;
-  min-height: 100px;
+  min-height: 104px;
 }
 
 .small-votes {
