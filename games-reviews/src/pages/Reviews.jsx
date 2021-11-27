@@ -193,15 +193,16 @@ export default function Reviews({ reviews, setReviews }) {
                   className="review-image"
                 />
                 <UpVote
+                  addClass="review-votes"
                   id={review.review_id}
                   recievedVotes={review.votes}
                   type="review"
                 />
               </div>
               <Link className="link" to={reviewUrl}>
-                <h3>{review.title}</h3>
+                <h3 className="review-title">{review.title}</h3>
               </Link>
-              <h6>Category: {review.category}</h6>
+              <h5 className="review-categoryw">Category: {review.category}</h5>
             </FancyCard>
           </div>
         );

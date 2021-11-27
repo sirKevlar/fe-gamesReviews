@@ -19,6 +19,7 @@ export default function UpVote({ recievedVotes, id, addClass, type }) {
       <h5 className={addClass}>VOTES {votes}</h5>
       <div>
         <button
+          disabled={votes === undefined}
           onClick={() => {
             setVotes((currVotes) => {
               return currVotes + 1;
@@ -30,7 +31,7 @@ export default function UpVote({ recievedVotes, id, addClass, type }) {
           🔼
         </button>
         <button
-          disabled={votes < 1}
+          disabled={votes < 1 || votes === undefined}
           onClick={() => {
             setVotes((currVotes) => {
               return currVotes - 1;

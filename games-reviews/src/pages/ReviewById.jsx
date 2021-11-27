@@ -74,7 +74,7 @@ export default function ReviewById() {
             setComments(newComments);
             postComment(reviewId, commentToInsert)
               .then((res) => {
-                console.log(res);
+                setAddComment("");
               })
               .catch((err) => {
                 console.log(err);
