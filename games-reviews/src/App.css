@@ -46,6 +46,15 @@ main {
   color: magenta;
 }
 
+#username {
+  color: black;
+}
+
+#username:hover {
+  color: magenta;
+  text-shadow: #47c5fd;
+}
+
 .rev-card {
   display: flex;
   flex-direction: column;
@@ -94,8 +103,8 @@ h6 {
   justify-content: space-between;
   background-image: linear-gradient(
     to bottom right,
-    rgba(191, 0, 255, 0.9),
-    rgba(255, 234, 0, 0.9)
+    rgba(135, 109, 184, 0.9),
+    rgba(152, 104, 172, 0.9)
   );
   box-shadow: 0 0 8px 4px grey;
 }
@@ -110,11 +119,7 @@ h6 {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-image: linear-gradient(
-    to bottom right,
-    rgb(255, 0, 160),
-    rgb(255, 0, 200)
-  );
+  background-image: linear-gradient(to bottom right, #4796fd, #47c5fd);
   border-radius: 50%;
   margin-right: 30px;
   height: 70px;
@@ -134,7 +139,7 @@ h6 {
   height: 24px;
   width: 24px;
   border: none;
-  box-shadow: 0 0 2px 2px rgb(170, 0, 255);
+  box-shadow: 0 0 2px 2px rgb(68, 0, 255);
   opacity: 0.8;
 }
 
@@ -242,14 +247,16 @@ h6 {
   margin: 0 4px;
 }
 
+h5.comment-vote {
+  margin-top: 0;
+}
+
 @media screen and (max-width: 455px) {
   h5.review-votes {
     margin-top: 1.3rem;
     margin-bottom: 1rem;
   }
-  h5.comment-vote {
-    margin-top: 0;
-  }
+
   .vote-button {
     margin-bottom: 0.4rem;
   }
@@ -462,4 +469,34 @@ h6 {
 
 .post-button:hover {
   box-shadow: 0 0 3px 2px magenta;
+}
+
+.users {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.user-card {
+  margin: 1em;
+  max-width: 400px;
+}
+
+.fun-fact {
+  margin-left: 1.5rem;
+  margin-right: 1.5rem;
+}
+
+.username-link {
+  width: fit-content;
+}
+
+.username-align {
+  display: flex;
+  justify-content: space-around;
+}
+
+.username-link:hover {
+  color: magenta;
+  cursor: pointer;
 }

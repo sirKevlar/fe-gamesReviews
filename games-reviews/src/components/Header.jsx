@@ -23,7 +23,9 @@ export default function Header({ setReviews }) {
         />
       </Link>
       <div id="user-icon" className="header-content">
-        {user.username ? user.username : "Sign in"}
+        <Link id="username" className="link" to="/users">
+          {user.username ? user.username : "Sign in"}
+        </Link>
       </div>
     </header>
   );

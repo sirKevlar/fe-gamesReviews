@@ -2,8 +2,9 @@ import React from "react";
 import { Routes, Route } from "react-router-dom";
 import Reviews from "./Reviews";
 import ReviewById from "./ReviewById";
+import Users from "./Users";
 
-export default function Main({ reviews, setReviews }) {
+export default function Main({ reviews, setReviews, usersFromApi }) {
   return (
     <div>
       <Routes>
@@ -18,6 +19,11 @@ export default function Main({ reviews, setReviews }) {
           element={<Reviews reviews={reviews} setReviews={setReviews} />}
         />
         <Route exact path="/reviews/:reviewId" element={<ReviewById />} />
+        <Route
+          exact
+          path="/users"
+          element={<Users usersFromApi={usersFromApi} />}
+        />
       </Routes>
     </div>
   );

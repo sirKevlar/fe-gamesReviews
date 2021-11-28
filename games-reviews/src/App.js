@@ -10,12 +10,16 @@ import logoutIcon from "./assets/logout (1).png";
 function App() {
   const { isLoggedIn, logout } = useContext(UserContext);
   const [reviews, setReviews] = useState([]);
+  const [usersFromApi, setUsersFromApi] = useState([]);
 
   return (
     <div className="App">
       <Header setReviews={setReviews} id="test" />
       <div className="under-header">
-        <RequireLogin>
+        <RequireLogin
+          usersFromApi={usersFromApi}
+          setUsersFromApi={setUsersFromApi}
+        >
           {isLoggedIn ? (
             <div>
               <Link to="/">
@@ -27,7 +31,11 @@ function App() {
                   />
                 </div>
               </Link>
-              <Main reviews={reviews} setReviews={setReviews} />
+              <Main
+                reviews={reviews}
+                setReviews={setReviews}
+                usersFromApi={usersFromApi}
+              />
             </div>
           ) : (
             <p>Do nothing</p>

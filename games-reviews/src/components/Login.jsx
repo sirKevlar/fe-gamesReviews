@@ -2,8 +2,7 @@ import { useContext, useState, useEffect } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { getUsers } from "../utils/apiCall";
 
-const Login = () => {
-  const [usersFromApi, setUsersFromApi] = useState([]);
+const Login = ({ usersFromApi, setUsersFromApi }) => {
   const [username, setUsername] = useState("");
   const [userIsNotValid, setUserIsNotValid] = useState(false);
   const { setUser } = useContext(UserContext);
@@ -12,7 +11,7 @@ const Login = () => {
     getUsers().then((users) => {
       setUsersFromApi(users);
     });
-  }, []);
+  }, [setUsersFromApi]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
