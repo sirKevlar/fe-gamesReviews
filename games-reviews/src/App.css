@@ -106,7 +106,7 @@ h6 {
     rgba(135, 109, 184, 0.9),
     rgba(152, 104, 172, 0.9)
   );
-  box-shadow: 0 0 8px 4px grey;
+  box-shadow: 0 0 8px 4px rgba(156, 141, 180, 0.9);
 }
 
 .header-content {
@@ -238,13 +238,12 @@ h6 {
 }
 
 .vote-button {
-  font-size: 1.2em;
-  padding: 5px 8px;
+  padding: 4px 10px 4px 6px;
   border-radius: 20%;
   background-color: rgba(0, 0, 0, 0.66);
   box-shadow: 0 0 1px 1px rgb(170, 0, 255);
   border: none;
-  margin: 0 4px;
+  margin: 4px;
 }
 
 h5.comment-vote {
