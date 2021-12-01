@@ -1,20 +1,29 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { getCategories } from "../utils/apiCall";
 import { postReview } from "../utils/apiCall";
 
-export default function ReviewForm({ categories, setReviewFormIsOpen }) {
+export default function ReviewForm({
+  categories,
+  setReviewFormIsOpen,
+  reviews,
+  setReviews,
+}) {
   const { user } = useContext(UserContext);
-  const [gameTitle, setGameTitle] = useState();
-  const [gameDesigner, setGameDesigner] = useState();
-  const [gameImageUrl, setGameImageUrl] = useState();
+  const [gameTitle, setGameTitle] = useState("");
+  const [gameDesigner, setGameDesigner] = useState("");
+  const [gameImageUrl, setGameImageUrl] = useState(
+    "https://picsum.photos/200/300"
+  );
   const [gameCategory, setGameCategory] = useState("strategy");
-  const [gameReview, setGameReview] = useState();
+  const [gameReview, setGameReview] = useState("");
+  const [gameCategoryDescription, setGameCategoryDescription] = useState(
+    "Category description"
+  );
   const [isValidCategory, setIsValidCategory] = useState(true);
   const isCategoryOther = (category) => {
     if (category === "other") {
       setIsValidCategory(false);
-      setGameCategory("Insert Category...");
+      setGameCategory("Insert Category");
     }
   };
 
@@ -27,6 +36,7 @@ export default function ReviewForm({ categories, setReviewFormIsOpen }) {
             <label htmlFor="game-title">
               Title
               <input
+                required
                 className="review-input-field"
                 type="text"
                 id="game-title"
@@ -39,6 +49,7 @@ export default function ReviewForm({ categories, setReviewFormIsOpen }) {
             <label htmlFor="game-designer">
               Designer
               <input
+                required
                 className="review-input-field"
                 type="text"
                 id="game-designer"
@@ -51,6 +62,7 @@ export default function ReviewForm({ categories, setReviewFormIsOpen }) {
             <label htmlFor="game-img-url">
               Image URL
               <input
+                required
                 className="review-input-field"
                 type="text"
                 id="game-img-url"
@@ -81,13 +93,24 @@ export default function ReviewForm({ categories, setReviewFormIsOpen }) {
                   <option value="other">other</option>
                 </select>
               ) : (
-                <input
-                  className="review-input-field"
-                  type="text"
-                  id="game-category"
-                  value={gameCategory}
-                  onChange={(e) => setGameCategory(e.target.value)}
-                />
+                <div>
+                  <input
+                    required
+                    className="review-input-field"
+                    type="text"
+                    id="game-category"
+                    value={gameCategory}
+                    onChange={(e) => setGameCategory(e.target.value)}
+                  />
+                  <input
+                    required
+                    className="review-input-field"
+                    type="text"
+                    id="game-category-description"
+                    value={gameCategoryDescription}
+                    onChange={(e) => setGameCategoryDescription(e.target.value)}
+                  />
+                </div>
               )}
             </label>
           </li>
@@ -107,6 +130,17 @@ export default function ReviewForm({ categories, setReviewFormIsOpen }) {
         <button
           onClick={(e) => {
             e.preventDefault();
+            const newReviews = [
+              {
+                owner: user.username,
+                comment_count: 0,
+                category: gameCategory,
+                review_img_url: gameImageUrl,
+                title: gameTitle,
+              },
+              ...reviews,
+            ];
+            setReviews(newReviews);
             postReview(
               user.username,
               gameTitle,
@@ -115,6 +149,7 @@ export default function ReviewForm({ categories, setReviewFormIsOpen }) {
               gameCategory,
               gameReview
             );
+            setReviewFormIsOpen(false);
           }}
           className="add-review-button"
         >

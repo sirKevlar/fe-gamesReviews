@@ -43,7 +43,13 @@ export const postReview = async (
     category: category,
     review_body: review,
   };
-  console.log(postObj);
+
+  const res = await boardGamesApi
+    .post("/reviews", postObj)
+    .catch((err) => console.log(err));
+
+  console.log(res);
+  return res;
 };
 
 export const getCommentsByReviewId = async (id) => {
@@ -64,6 +70,11 @@ export const postComment = async (reviewId, comment) => {
     comment
   );
   return confirmation.data;
+};
+
+export const deleteCommentById = async (commentId) => {
+  const confirmation = await boardGamesApi.delete(`/comments/${commentId}`);
+  return confirmation;
 };
 
 export const upVote = async (id, type) => {

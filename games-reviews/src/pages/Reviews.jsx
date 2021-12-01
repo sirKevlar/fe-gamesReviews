@@ -189,6 +189,8 @@ export default function Reviews({
       <FancyCard>
         {reviewFormIsOpen ? (
           <ReviewForm
+            reviews={reviews}
+            setReviews={setReviews}
             categories={categories}
             setReviewFormIsOpen={setReviewFormIsOpen}
           />
@@ -210,6 +212,7 @@ export default function Reviews({
                   className="review-image"
                 />
                 <UpVote
+                  author={review.owner}
                   addClass="review-votes"
                   id={review.review_id}
                   recievedVotes={review.votes}
@@ -219,7 +222,7 @@ export default function Reviews({
               <Link className="link" to={reviewUrl}>
                 <h3 className="review-title">{review.title}</h3>
               </Link>
-              <h5 className="review-categoryw">Category: {review.category}</h5>
+              <h5 className="review-category">Category: {review.category}</h5>
             </FancyCard>
           </div>
         );

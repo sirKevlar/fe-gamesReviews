@@ -7,10 +7,11 @@ import {
   getReviewById,
   getCommentsByReviewId,
   postComment,
+  deleteCommentById,
 } from "../utils/apiCall";
 
 export default function ReviewById() {
-  const user = useContext(UserContext);
+  const { user } = useContext(UserContext);
   const [review, setReview] = useState([]);
   const [commentCount, setCommentCount] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
@@ -49,6 +50,7 @@ export default function ReviewById() {
         <h5>Contributor: {review.owner}</h5>
         <h6 className="review-body">{review.review_body}</h6>
         <UpVote
+          author={review.owner}
           id={review.review_id}
           recievedVotes={review.votes}
           type="review"
@@ -67,7 +69,7 @@ export default function ReviewById() {
           onClick={(e) => {
             e.preventDefault();
             const commentToInsert = {
-              username: user.user.username,
+              username: user.username,
               body: addComment,
             };
             const newComments = [commentToInsert, ...comments];
@@ -85,6 +87,8 @@ export default function ReviewById() {
         </button>
       </form>
       {comments.map((comment) => {
+        const deleteCommentId = `delete-comment-${comment.comment_id}`;
+
         return (
           <FancyCard key={comment.body} commentBody={comment.body}>
             <div className="comments">
@@ -92,9 +96,25 @@ export default function ReviewById() {
               <div className="comments-bottom">
                 <div className="comment-body">
                   <h6>{comment.body}</h6>
+                  <button
+                    disabled={user.username !== comment.author}
+                    onClick={(e) => {
+                      const newComments = comments.filter((comment) => {
+                        return comment.comment_id !== Number(e.target.value);
+                      });
+                      setComments(newComments);
+                      deleteCommentById(e.target.value);
+                    }}
+                    className="delete-comment-button"
+                    id={deleteCommentId}
+                    value={comment.comment_id}
+                  >
+                    ❌
+                  </button>
                 </div>
                 <div className="small-votes">
                   <UpVote
+                    author={comment.author}
                     addClass="comment-vote"
                     id={comment.comment_id}
                     recievedVotes={comment.votes}
