@@ -37,6 +37,15 @@ main {
   color: rgb(247, 230, 255);
 }
 
+li {
+  list-style: none;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+}
+
 .link {
   text-decoration: none;
   color: rgb(205, 100, 255);
@@ -198,6 +207,32 @@ h6 {
   color: rgb(247, 230, 255);
 }
 
+.add-review-button {
+  margin: 1.5em;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.66);
+  box-shadow: 0 0 1px 1px rgb(170, 0, 255);
+  border: none;
+  color: rgb(247, 230, 255);
+  padding: 0.5rem;
+  font-weight: 700;
+}
+
+.add-review-button:hover {
+  color: magenta;
+}
+
+.review-input-field {
+  width: 94%;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+  height: 20px;
+}
+
+#game-review {
+  height: 100px;
+}
+
 .review-image {
   width: 50%;
   height: 140px;
@@ -260,7 +295,7 @@ h5.comment-vote {
     margin-bottom: 0.4rem;
   }
 }
-
+.add-review-button:hover,
 .vote-button:hover {
   box-shadow: 0 0 4px 4px darkmagenta;
   cursor: pointer;

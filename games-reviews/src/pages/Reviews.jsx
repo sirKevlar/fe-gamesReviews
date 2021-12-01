@@ -3,11 +3,18 @@ import { Link } from "react-router-dom";
 import FancyCard from "../components/FancyCard";
 import SideNav from "../components/SideNav";
 import UpVote from "../components/UpVote";
+import ReviewForm from "../components/ReviewForm";
+import AddReviewButton from "../components/AddReviewButton";
 import { getReviews, getCategories } from "../utils/apiCall";
 
-export default function Reviews({ reviews, setReviews }) {
+export default function Reviews({
+  reviews,
+  setReviews,
+  categories,
+  setCategories,
+}) {
   const [isLoading, setIsLoading] = useState(true);
-  const [categories, setCategories] = useState([]);
+  const [reviewFormIsOpen, setReviewFormIsOpen] = useState(false);
   const [selectedCategory, setSelectedCategory] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [order, setOrder] = useState("desc");
@@ -24,7 +31,7 @@ export default function Reviews({ reviews, setReviews }) {
       setCategories(categoriesFromApi);
       setIsLoading(false);
     });
-  }, []);
+  }, [setCategories]);
 
   if (isLoading) return <h2>Be Patient...</h2>;
 
@@ -179,6 +186,16 @@ export default function Reviews({ reviews, setReviews }) {
         </div>
       </SideNav>
       <h2>Reviews...</h2>
+      <FancyCard>
+        {reviewFormIsOpen ? (
+          <ReviewForm
+            categories={categories}
+            setReviewFormIsOpen={setReviewFormIsOpen}
+          />
+        ) : (
+          <AddReviewButton setReviewFormIsOpen={setReviewFormIsOpen} />
+        )}
+      </FancyCard>
 
       {reviews.map((review) => {
         const reviewUrl = `/reviews/${review.review_id}`;

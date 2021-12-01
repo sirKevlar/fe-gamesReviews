@@ -27,6 +27,25 @@ export const getReviewById = async (id) => {
   return reviewObj.data.review;
 };
 
+export const postReview = async (
+  owner,
+  title,
+  designer,
+  imageUrl,
+  category,
+  review
+) => {
+  const postObj = {
+    title: title,
+    designer: designer,
+    owner: owner,
+    review_img_url: imageUrl,
+    category: category,
+    review_body: review,
+  };
+  console.log(postObj);
+};
+
 export const getCommentsByReviewId = async (id) => {
   const {
     data: { comments },
