@@ -21,7 +21,6 @@ const Login = ({ usersFromApi, setUsersFromApi }) => {
     });
 
     if (matchingUser) {
-      console.log(matchingUser);
       setUser(matchingUser);
     } else {
       setUserIsNotValid(true);

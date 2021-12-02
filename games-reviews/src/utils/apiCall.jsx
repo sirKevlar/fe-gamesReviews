@@ -52,6 +52,12 @@ export const postReview = async (
   return res;
 };
 
+export const deleteReviewById = async (id) => {
+  const confirmation = await boardGamesApi.delete(`/reviews/${id}`);
+  console.log(confirmation);
+  return confirmation;
+};
+
 export const getCommentsByReviewId = async (id) => {
   const {
     data: { comments },

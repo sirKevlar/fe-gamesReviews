@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { useParams } from "react-router";
+import { Link } from "react-router-dom";
 import { UserContext } from "../contexts/UserContext";
 import FancyCard from "../components/FancyCard";
 import UpVote from "../components/UpVote";
@@ -8,6 +9,7 @@ import {
   getCommentsByReviewId,
   postComment,
   deleteCommentById,
+  deleteReviewById,
 } from "../utils/apiCall";
 
 export default function ReviewById() {
@@ -17,6 +19,7 @@ export default function ReviewById() {
   const [isLoading, setIsLoading] = useState(true);
   const [comments, setComments] = useState([]);
   const [addComment, setAddComment] = useState("");
+  const [wasDeletePressed, setWasDeletePressed] = useState(false);
   const { reviewId } = useParams();
 
   useEffect(() => {
@@ -49,12 +52,53 @@ export default function ReviewById() {
         <h5>Comment Count: {commentCount}</h5>
         <h5>Contributor: {review.owner}</h5>
         <h6 className="review-body">{review.review_body}</h6>
-        <UpVote
-          author={review.owner}
-          id={review.review_id}
-          recievedVotes={review.votes}
-          type="review"
-        />
+        <div className="review-votes-section">
+          <div className="delete-mirror">
+            <button className="delete-review-button hidden">❌</button>
+          </div>
+          <UpVote
+            author={review.owner}
+            id={review.review_id}
+            recievedVotes={review.votes}
+            type="review"
+          />
+          <div className="delete-review">
+            <button
+              disabled={wasDeletePressed || user.username !== review.owner}
+              className="delete-review-button"
+              onClick={() => {
+                setWasDeletePressed(true);
+              }}
+            >
+              ❌
+            </button>
+          </div>
+        </div>
+        {wasDeletePressed && (
+          <div>
+            <h6 className="delete-warning">ARE YOU SURE YOU WANT TO DELETE?</h6>
+            <Link to="/reviews">
+              <button
+                className="delete-confirm-button"
+                onClick={() => {
+                  deleteReviewById(review.review_id).catch((err) => {
+                    console.log(err);
+                  });
+                }}
+              >
+                Hell Yeah!
+              </button>
+            </Link>
+            <button
+              className="delete-confirm-button"
+              onClick={() => {
+                setWasDeletePressed(false);
+              }}
+            >
+              Wait No!
+            </button>
+          </div>
+        )}
       </FancyCard>
       <form className="comment-input">
         <input

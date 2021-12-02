@@ -7,7 +7,7 @@ export default function UpVote({ recievedVotes, id, addClass, type, author }) {
   const { user } = useContext(UserContext);
   const [votes, setVotes] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
-  const classToAdd = `vote-button ${addClass}`;
+  const classToAdd = `vote-button-${type}`;
 
   useEffect(() => {
     setVotes(recievedVotes);

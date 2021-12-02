@@ -21,6 +21,10 @@ html {
     "main";
 }
 
+.hidden {
+  visibility: hidden;
+}
+
 .under-header {
   grid-area: main;
   height: auto;
@@ -136,6 +140,7 @@ h6 {
   font-size: 0.8em;
   font-weight: 700;
   color: aliceblue;
+  box-shadow: 0 0 2px 2px rgb(68, 0, 255);
 }
 
 .logout {
@@ -159,7 +164,7 @@ h6 {
 
 .logout-icon {
   margin-right: 1px;
-  margin-top: 1px;
+  margin-top: 2px;
   height: 20px;
   width: 20px;
 }
@@ -277,13 +282,40 @@ h6 {
   margin-top: 2.5rem;
 }
 
-.vote-button {
-  padding: 4px 10px 4px 6px;
+.review-votes-section {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+.delete-confirm-button,
+.vote-button-review,
+.vote-button-reviews,
+.vote-button-comment {
+  padding: 4px 6px 4px 6px;
   border-radius: 20%;
   background-color: rgba(0, 0, 0, 0.66);
   box-shadow: 0 0 1px 1px rgb(170, 0, 255);
   border: none;
   margin: 4px;
+}
+
+.delete-confirm-button {
+  color: white;
+  font-weight: 700;
+  width: 40%;
+  margin-bottom: 1rem;
+}
+
+.delete-warning {
+  margin: 0.4rem;
+  background-color: white;
+  color: red;
+  font-weight: 700;
+}
+
+.vote-button-review {
+  margin-bottom: 1rem;
 }
 
 h5.comment-vote {
@@ -296,15 +328,12 @@ h5.comment-vote {
     margin-bottom: 1rem;
   }
 
-  .vote-button {
+  .vote-button-reviews {
     margin-bottom: 0.4rem;
   }
 }
 
-.change-user-button:hover,
-.delete-comment-button:hover:enabled,
-.add-review-button:hover:enabled,
-.vote-button:hover:enabled {
+button:hover:enabled {
   box-shadow: 0 0 4px 4px darkmagenta;
   cursor: pointer;
 }
@@ -473,13 +502,19 @@ h5.comment-vote {
   display: flex;
 }
 
-.delete-comment-button {
+.delete-comment-button,
+.delete-review-button {
   font-size: 0.5em;
   background-color: rgba(32, 1, 43, 0.769);
   border: none;
-  padding: 0.5em 1em;
+  padding: 5px 7px 5px 5px;
   border-radius: 3px;
   box-shadow: 0 0 1px 1px rgb(170, 0, 255);
+}
+
+.delete-review-button {
+  margin-bottom: 1rem;
+  margin-right: 1rem;
 }
 
 .comment-vote {

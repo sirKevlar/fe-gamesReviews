@@ -216,7 +216,7 @@ export default function Reviews({
                   addClass="review-votes"
                   id={review.review_id}
                   recievedVotes={review.votes}
-                  type="review"
+                  type="reviews"
                 />
               </div>
               <Link className="link" to={reviewUrl}>
