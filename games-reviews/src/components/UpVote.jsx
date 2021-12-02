@@ -33,7 +33,9 @@ export default function UpVote({ recievedVotes, id, addClass, type, author }) {
           🔼
         </button>
         <button
-          disabled={votes < 1 || votes === undefined || author == user.username}
+          disabled={
+            votes < 1 || votes === undefined || author === user.username
+          }
           onClick={() => {
             setVotes((currVotes) => {
               return currVotes - 1;

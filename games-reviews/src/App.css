@@ -206,7 +206,7 @@ h6 {
   border-radius: 10px;
   color: rgb(247, 230, 255);
 }
-
+.change-user-button,
 .add-review-button {
   margin: 1.5em;
   width: 90%;
@@ -218,6 +218,11 @@ h6 {
   font-weight: 700;
 }
 
+.change-user-button {
+  margin-top: 0;
+}
+
+.change-user-button:hover,
 .add-review-button:hover {
   color: magenta;
 }
@@ -296,6 +301,7 @@ h5.comment-vote {
   }
 }
 
+.change-user-button:hover,
 .delete-comment-button:hover:enabled,
 .add-review-button:hover:enabled,
 .vote-button:hover:enabled {

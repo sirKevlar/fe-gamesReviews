@@ -34,6 +34,14 @@ export default function Users({ usersFromApi }) {
             <img src={url} alt="random headshot" />
             <h5 className="fun-fact">Fun Fact: {randomFact[i]}</h5>
             <h6>click my name to see what Google has to say about me</h6>
+            <button
+              onClick={() => {
+                setUser({ username: user.username });
+              }}
+              className="change-user-button"
+            >
+              CHANGE USER
+            </button>
           </FancyCard>
         );
       })}

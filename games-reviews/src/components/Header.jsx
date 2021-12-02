@@ -5,6 +5,15 @@ import { useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
 import { getReviews } from "../utils/apiCall";
 
+const userDisplayNames = {
+  tickle122: "tickle",
+  jessjelly: "jess",
+  grumpy19: "grumpy",
+  happyamy2016: "happyamy",
+  cooljmessy: "coolj",
+  weegembump: "weegem",
+};
+
 export default function Header({ setReviews }) {
   const { user } = useContext(UserContext);
 
@@ -24,7 +33,7 @@ export default function Header({ setReviews }) {
       </Link>
       <div id="user-icon" className="header-content">
         <Link id="username" className="link" to="/users">
-          {user.username ? user.username : "Sign in"}
+          {user.username ? userDisplayNames[user.username] : "Sign in"}
         </Link>
       </div>
     </header>

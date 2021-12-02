@@ -4,7 +4,12 @@ import Reviews from "./Reviews";
 import ReviewById from "./ReviewById";
 import Users from "./Users";
 
-export default function Main({ reviews, setReviews, usersFromApi }) {
+export default function Main({
+  reviews,
+  setReviews,
+  usersFromApi,
+  setUsersFromApi,
+}) {
   const [categories, setCategories] = useState([]);
 
   return (
