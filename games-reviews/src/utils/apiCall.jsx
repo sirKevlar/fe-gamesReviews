@@ -39,22 +39,19 @@ export const postReview = async (
     title: title,
     designer: designer,
     owner: owner,
+    review_body: review,
     review_img_url: imageUrl,
     category: category,
-    review_body: review,
   };
 
   const res = await boardGamesApi
     .post("/reviews", postObj)
     .catch((err) => console.log(err));
-
-  console.log(res);
   return res;
 };
 
 export const deleteReviewById = async (id) => {
   const confirmation = await boardGamesApi.delete(`/reviews/${id}`);
-  console.log(confirmation);
   return confirmation;
 };
 
@@ -78,8 +75,8 @@ export const postComment = async (reviewId, comment) => {
   return confirmation.data;
 };
 
-export const deleteCommentById = async (commentId) => {
-  const confirmation = await boardGamesApi.delete(`/comments/${commentId}`);
+export const deleteCommentById = async (id) => {
+  const confirmation = await boardGamesApi.delete(`/comments/${id}`);
   return confirmation;
 };
 

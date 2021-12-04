@@ -292,12 +292,16 @@ h6 {
 .vote-button-review,
 .vote-button-reviews,
 .vote-button-comment {
-  padding: 4px 6px 4px 6px;
   border-radius: 20%;
   background-color: rgba(0, 0, 0, 0.66);
   box-shadow: 0 0 1px 1px rgb(170, 0, 255);
   border: none;
   margin: 4px;
+}
+.vote-button-review,
+.vote-button-reviews,
+.vote-button-comment {
+  padding: 5px 8px;
 }
 
 .delete-confirm-button {
