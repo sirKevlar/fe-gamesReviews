@@ -220,14 +220,7 @@ export default function Reviews({
                 />
               </div>
               <Link className="link" to={reviewUrl}>
-                <h3
-                  className="review-title"
-                  onClick={() => {
-                    console.log(review.review_id, typeof review.review_id);
-                  }}
-                >
-                  {review.title}
-                </h3>
+                <h3 className="review-title">{review.title}</h3>
               </Link>
               <h5 className="review-category">Category: {review.category}</h5>
             </FancyCard>

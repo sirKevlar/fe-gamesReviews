@@ -39,7 +39,11 @@ export default function Main({
             />
           }
         />
-        <Route exact path="/reviews/:reviewId" element={<ReviewById />} />
+        <Route
+          exact
+          path="/reviews/:reviewId"
+          element={<ReviewById reviews={reviews} setReviews={setReviews} />}
+        />
         <Route
           exact
           path="/users"

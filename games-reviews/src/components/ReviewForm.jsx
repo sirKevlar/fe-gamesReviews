@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { postReview } from "../utils/apiCall";
+import { postReview, postComment } from "../utils/apiCall";
 
 export default function ReviewForm({
   categories,
@@ -25,6 +25,10 @@ export default function ReviewForm({
       setIsValidCategory(false);
       setGameCategory("Insert Category");
     }
+  };
+  const noComment = {
+    username: user.username,
+    body: "No one left any comments yet 😢",
   };
 
   return (
@@ -148,7 +152,9 @@ export default function ReviewForm({
               gameImageUrl,
               gameCategory,
               gameReview
-            );
+            ).then((response) => {
+              postComment(response.data.review.review_id, noComment);
+            });
             setReviewFormIsOpen(false);
           }}
           className="add-review-button"

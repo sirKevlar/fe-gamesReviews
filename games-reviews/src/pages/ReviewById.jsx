@@ -12,7 +12,7 @@ import {
   deleteReviewById,
 } from "../utils/apiCall";
 
-export default function ReviewById() {
+export default function ReviewById({ reviews, setReviews }) {
   const { user } = useContext(UserContext);
   const [review, setReview] = useState([]);
   const [commentCount, setCommentCount] = useState(0);
@@ -81,9 +81,17 @@ export default function ReviewById() {
               <button
                 className="delete-confirm-button"
                 onClick={() => {
+                  comments.forEach((comment) => {
+                    deleteCommentById(comment.comment_id);
+                  });
                   deleteReviewById(review.review_id).catch((err) => {
                     console.log(err);
                   });
+                  // const newReviews = reviews.filter(
+                  //   (filteredReview) =>
+                  //     filteredReview.review_id !== review.review_id
+                  // );
+                  // setReviews(newReviews);
                 }}
               >
                 Hell Yeah!
