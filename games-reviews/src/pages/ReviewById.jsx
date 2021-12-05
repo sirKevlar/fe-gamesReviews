@@ -130,7 +130,6 @@ export default function ReviewById({ reviews, setReviews }) {
               body: addComment,
             };
             const newComments = [commentToInsert, ...comments];
-            setComments(newComments);
             const newCommentCount = (
               Number(review.comment_count) + 1
             ).toString();
@@ -142,6 +141,7 @@ export default function ReviewById({ reviews, setReviews }) {
               .catch((err) => {
                 console.log(err);
               });
+            setComments(newComments);
           }}
         >
           POST
@@ -153,7 +153,9 @@ export default function ReviewById({ reviews, setReviews }) {
         return (
           <FancyCard key={comment.body} commentBody={comment.body}>
             <div className="comments">
-              <h5 className="comments-h5">{comment.author}</h5>
+              <h5 className="comments-h5">
+                {comment.author || comment.username}
+              </h5>
               <div className="comments-bottom">
                 <div className="comment-body">
                   <h6>{comment.body}</h6>
