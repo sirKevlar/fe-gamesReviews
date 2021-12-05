@@ -12,10 +12,11 @@ export default function Reviews({
   setReviews,
   categories,
   setCategories,
+  selectedCategory,
+  setSelectedCategory,
 }) {
   const [isLoading, setIsLoading] = useState(true);
   const [reviewFormIsOpen, setReviewFormIsOpen] = useState(false);
-  const [selectedCategory, setSelectedCategory] = useState("");
   const [sortBy, setSortBy] = useState("");
   const [order, setOrder] = useState("desc");
 

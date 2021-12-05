@@ -8,7 +8,8 @@ export default function Main({
   reviews,
   setReviews,
   usersFromApi,
-  setUsersFromApi,
+  selectedCategory,
+  setSelectedCategory,
 }) {
   const [categories, setCategories] = useState([]);
 
@@ -24,6 +25,8 @@ export default function Main({
               setReviews={setReviews}
               categories={categories}
               setCategories={setCategories}
+              selectedCategory={selectedCategory}
+              setSelectedCategory={setSelectedCategory}
             />
           }
         />

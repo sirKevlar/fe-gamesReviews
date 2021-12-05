@@ -11,10 +11,15 @@ function App() {
   const { isLoggedIn, logout } = useContext(UserContext);
   const [reviews, setReviews] = useState([]);
   const [usersFromApi, setUsersFromApi] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState("");
 
   return (
     <div className="App">
-      <Header setReviews={setReviews} id="test" />
+      <Header
+        setSelectedCategory={setSelectedCategory}
+        setReviews={setReviews}
+        id="test"
+      />
       <div className="under-header">
         <RequireLogin
           usersFromApi={usersFromApi}
@@ -35,18 +40,12 @@ function App() {
                 reviews={reviews}
                 setReviews={setReviews}
                 usersFromApi={usersFromApi}
+                selectedCategory={selectedCategory}
+                setSelectedCategory={setSelectedCategory}
               />
             </div>
           ) : (
             <p>Do nothing</p>
-            // <button
-            //   onClick={() => {
-            //     setUser(user);
-            //   }}
-            // >
-            //   LOG IN
-            // </button>
-            // THIS LOGIC IS UNREACHABLE THANK TO FORM HANDLING LOGIN
           )}
         </RequireLogin>
       </div>

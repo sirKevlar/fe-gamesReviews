@@ -14,7 +14,7 @@ const userDisplayNames = {
   weegembump: "weegem",
 };
 
-export default function Header({ setReviews }) {
+export default function Header({ setReviews, setSelectedCategory }) {
   const { user } = useContext(UserContext);
 
   return (
@@ -23,6 +23,7 @@ export default function Header({ setReviews }) {
         <img
           onClick={() => {
             getReviews().then((reviewsFromApi) => {
+              setSelectedCategory("");
               setReviews(reviewsFromApi);
             });
           }}
