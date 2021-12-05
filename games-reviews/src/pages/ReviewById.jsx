@@ -84,6 +84,8 @@ export default function ReviewById({ reviews, setReviews }) {
                   comments.forEach((comment) => {
                     deleteCommentById(comment.comment_id);
                   });
+                  console.log(review.review_id);
+                  //THIS LOG PREVENTS THE NEXT FUNCTION FROM ERRORING???
                   deleteReviewById(review.review_id)
                     .then(() => {
                       const newReviews = reviews.filter(
