@@ -129,6 +129,10 @@ export default function ReviewById({ reviews, setReviews }) {
             };
             const newComments = [commentToInsert, ...comments];
             setComments(newComments);
+            const newCommentCount = (
+              Number(review.comment_count) + 1
+            ).toString();
+            setCommentCount(newCommentCount);
             postComment(reviewId, commentToInsert)
               .then((res) => {
                 setAddComment("");
@@ -164,14 +168,10 @@ export default function ReviewById({ reviews, setReviews }) {
                       const newCommentCount = (
                         Number(review.comment_count) - 1
                       ).toString();
+                      setCommentCount(newCommentCount);
                       const newReview = { ...review };
                       newReview.comment_count = newCommentCount;
                       deleteCommentById(e.target.value).then((res) => {
-                        console.log(
-                          newReview,
-                          res,
-                          "Attempting to make comment count drop on screen"
-                        );
                         setReview(newReview);
                       });
                     }}
