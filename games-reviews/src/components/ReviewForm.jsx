@@ -153,6 +153,8 @@ export default function ReviewForm({
               gameCategory,
               gameReview
             ).then((response) => {
+              const newReviews = [response.data.review, ...reviews];
+              setReviews(newReviews);
               postComment(response.data.review.review_id, noComment);
             });
             setReviewFormIsOpen(false);

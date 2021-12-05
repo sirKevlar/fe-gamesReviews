@@ -65,7 +65,7 @@ ul {
 
 #username:hover {
   color: magenta;
-  text-shadow: #47c5fd;
+  font-size: 1.4em;
 }
 
 .rev-card {

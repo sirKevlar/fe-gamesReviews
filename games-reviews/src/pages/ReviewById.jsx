@@ -84,14 +84,17 @@ export default function ReviewById({ reviews, setReviews }) {
                   comments.forEach((comment) => {
                     deleteCommentById(comment.comment_id);
                   });
-                  deleteReviewById(review.review_id).catch((err) => {
-                    console.log(err);
-                  });
-                  // const newReviews = reviews.filter(
-                  //   (filteredReview) =>
-                  //     filteredReview.review_id !== review.review_id
-                  // );
-                  // setReviews(newReviews);
+                  deleteReviewById(review.review_id)
+                    .then(() => {
+                      const newReviews = reviews.filter(
+                        (filteredReview) =>
+                          filteredReview.review_id !== review.review_id
+                      );
+                      setReviews(newReviews);
+                    })
+                    .catch((err) => {
+                      console.log(err);
+                    });
                 }}
               >
                 Hell Yeah!
@@ -149,13 +152,28 @@ export default function ReviewById({ reviews, setReviews }) {
                 <div className="comment-body">
                   <h6>{comment.body}</h6>
                   <button
-                    disabled={user.username !== comment.author}
+                    disabled={
+                      user.username !== comment.author ||
+                      review.comment_count < 2
+                    }
                     onClick={(e) => {
                       const newComments = comments.filter((comment) => {
                         return comment.comment_id !== Number(e.target.value);
                       });
                       setComments(newComments);
-                      deleteCommentById(e.target.value);
+                      const newCommentCount = (
+                        Number(review.comment_count) - 1
+                      ).toString();
+                      const newReview = { ...review };
+                      newReview.comment_count = newCommentCount;
+                      deleteCommentById(e.target.value).then((res) => {
+                        console.log(
+                          newReview,
+                          res,
+                          "Attempting to make comment count drop on screen"
+                        );
+                        setReview(newReview);
+                      });
                     }}
                     className="delete-comment-button"
                     id={deleteCommentId}
