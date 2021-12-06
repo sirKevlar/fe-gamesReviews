@@ -84,6 +84,7 @@ export default function ReviewForm({
                   name="game-category"
                   id="game-category"
                   onChange={(e) => {
+                    setGameCategory(e.target.value);
                     isCategoryOther(e.target.value);
                   }}
                 >
@@ -104,7 +105,9 @@ export default function ReviewForm({
                     type="text"
                     id="game-category"
                     value={gameCategory}
-                    onChange={(e) => setGameCategory(e.target.value)}
+                    onChange={(e) => {
+                      setGameCategory(e.target.value);
+                    }}
                   />
                   <input
                     required
