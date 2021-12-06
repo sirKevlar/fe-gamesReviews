@@ -112,3 +112,8 @@ export const getCategories = async () => {
   const categoryObj = await boardGamesApi.get("/categories");
   return categoryObj.data.categories;
 };
+
+export const postCategory = async (newCategory) => {
+  const confirmation = await boardGamesApi.post("/categories", newCategory);
+  return confirmation.data;
+};

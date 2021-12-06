@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import { UserContext } from "../contexts/UserContext";
-import { postReview, postComment } from "../utils/apiCall";
+import { postReview, postComment, postCategory } from "../utils/apiCall";
 
 export default function ReviewForm({
   categories,
@@ -145,18 +145,40 @@ export default function ReviewForm({
               ...reviews,
             ];
             setReviews(newReviews);
-            postReview(
-              user.username,
-              gameTitle,
-              gameDesigner,
-              gameImageUrl,
-              gameCategory,
-              gameReview
-            ).then((response) => {
-              const newReviews = [response.data.review, ...reviews];
-              setReviews(newReviews);
-              postComment(response.data.review.review_id, noComment);
-            });
+            if (gameCategoryDescription !== "Category description") {
+              const categoryPost = {
+                slug: gameCategory,
+                description: gameCategoryDescription,
+                owner: user.username,
+              };
+              postCategory(categoryPost).then(() => {
+                postReview(
+                  user.username,
+                  gameTitle,
+                  gameDesigner,
+                  gameImageUrl,
+                  gameCategory,
+                  gameReview
+                ).then((response) => {
+                  const newReviews = [response.data.review, ...reviews];
+                  setReviews(newReviews);
+                  postComment(response.data.review.review_id, noComment);
+                });
+              });
+            } else {
+              postReview(
+                user.username,
+                gameTitle,
+                gameDesigner,
+                gameImageUrl,
+                gameCategory,
+                gameReview
+              ).then((response) => {
+                const newReviews = [response.data.review, ...reviews];
+                setReviews(newReviews);
+                postComment(response.data.review.review_id, noComment);
+              });
+            }
             setReviewFormIsOpen(false);
           }}
           className="add-review-button"
