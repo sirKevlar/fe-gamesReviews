@@ -2,12 +2,10 @@ import { useState } from "react";
 import { Routes, Route } from "react-router-dom";
 import Reviews from "./Reviews";
 import ReviewById from "./ReviewById";
-import Users from "./Users";
 
 export default function Main({
   reviews,
   setReviews,
-  usersFromApi,
   selectedCategory,
   setSelectedCategory,
 }) {
@@ -46,11 +44,6 @@ export default function Main({
           exact
           path="/reviews/:reviewId"
           element={<ReviewById reviews={reviews} setReviews={setReviews} />}
-        />
-        <Route
-          exact
-          path="/users"
-          element={<Users usersFromApi={usersFromApi} />}
         />
       </Routes>
     </div>
